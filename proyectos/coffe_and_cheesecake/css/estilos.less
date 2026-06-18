@@ -1,0 +1,804 @@
+/*------------------------*/
+/* 1. Variables           */
+/*------------------------*/
+
+// 1.a Colores
+@negro-costum: #141618;
+@blanco: #fff;
+@texto-oscuro: #303133;
+@texto-claro: #777;
+@dorado: #b4975a;
+@gris-claro: #d0e4ed55;
+
+// 1.b Fuentes
+@fuente-principal: "Playfair Display", serif;
+@fuente-secundaria: "Poppins", serif;
+
+/*------------------------*/
+/* 2. Estilos generales   */
+/*------------------------*/
+
+// 2.a Estilos generales
+*{
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box; // Mozilla
+    -webkit-box-sizing: border-box; // Safari
+    box-sizing: border-box; // En general
+}
+
+// 2.b Estilo para el body
+body{
+    font-size: 16px;
+    font-family: @fuente-principal;
+    color: @texto-oscuro
+}
+
+// 2.c Estilo del contenedor
+.container{
+    width: 90%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+// 2.d Estilo de la las imágenes
+img{
+    vertical-align: top; 
+    max-width: 100%; // Para que no supere el ancho del contenedor
+}
+
+// Cambiamos el estilo de los enlaces
+a{
+    text-decoration: none;
+    color: @texto-oscuro;
+    --webkit-transition: all .3s ease;
+    --o-transition: all .3s ease;
+    transition: all .3s ease;
+
+    &:hover{
+        color: fade(@texto-oscuro, 50%)
+    }
+}
+
+// Ponemos estilos a los titulos de cada seccion
+.titulo-seccion{
+    h2{
+        font-size: 3.125rem;
+        font-weight: 400;
+        line-height: 3.6875rem;
+        font-style: italic;
+        letter-spacing: -0.02em; // Lo hago en relacion a la fuente actual
+    }
+
+    p{
+        font-size: 1.15rem;
+        color: @texto-claro;
+    }
+}
+
+// Estilos imagen modal
+.imagen-modal{
+    width: 90%;
+    max-width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translated(-50%, -50%);
+    transition: opacity .3s ease;
+}
+
+.imagen-modal + i {
+    position: absolute;
+    top: 2%;
+    right: 26.7%;
+    color: #303133;
+    font-size: 2.25rem;
+    background: @blanco;
+    padding: 0.75rem 0.875rem;
+    cursor: pointer;
+}
+
+/*--------------------------------------*/
+/* 3. Estilos del header o encabezado   */
+/*--------------------------------------*/
+header{
+    .menu-bar-pc{
+        background-color: @blanco;
+        width: 100%;
+        position: fixed; 
+        z-index: 99;
+        top: 0;
+        padding: 0 2.25rem; // 1rem = 16px => 36px/16px = 2.25rem
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between; 
+        align-items: center;
+        min-height: 5.875rem; // 1rem = 16px => 94px/16px = 5.875rem
+        border-bottom: 2px solid @gris-claro;
+
+        .logo{
+            max-width: 3.125rem; // 50px/16px = 3.125rem
+            filter: drop-shadow(2px 2px 4px rgb(0,0,0,0.2));
+        }
+
+        .menu-principal{
+
+            a{
+                padding: 0 0.5625rem;
+            }
+        }
+
+        .top-redes{
+            a{
+                padding: 0 0.5625rem; 
+            }
+
+        }
+    }
+
+    //Definimos el estilo del menu móvil
+    .menu-bar-movil{
+		background: @blanco;
+		width: 100%;
+		position: fixed;
+		z-index: 99;
+		top: 0;
+		padding: 0 2.25rem;
+		display: none;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 5.875rem;
+		border-bottom: 1px solid @gris-claro;
+
+		.logo{
+			max-width: 3.125rem;
+		}
+
+		.burger-menu{
+			cursor: pointer; // Icono de menú hamburguesa
+			font-size: 2.1875rem; // Tamaño del icono
+		}
+
+		.slideMenu{ // Menú deslizable
+			position: fixed; // Posición fija para que se deslice desde el lado
+			top: 5.875rem;
+			left: -80%;
+			background: @blanco;
+			text-align: center;
+			padding:1.25rem 2.25rem;
+			width: 80%;
+			-webkit-transition: all .3s ease;
+			-o-transition: all .3s ease;
+			transition: all .3s ease;
+
+			&.active{
+				left: 0;
+			}
+
+			.top-redes{
+				margin-bottom: 0.625rem;
+				a{
+					padding: 0 0.5625rem;
+				}
+			}
+
+			.menu-principal{
+				a{
+					display: block; // Uno encima el otro
+					padding: 0.625rem 0;
+					border-top: 1px solid @gris-claro;
+				}
+			}
+		}
+	}
+}
+
+/*--------------------------------------*/
+/* 4. Estilos del main                  */
+/*--------------------------------------*/
+.main{
+    margin-top: 5.875rem;
+
+    /*Estilo de la portada */
+    .portada{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    
+        .col{
+            width: 50%;
+            background: @negro-costum;
+            color: @blanco;
+            display: flex;
+            flex-wrap: wrap;
+    
+            .foto{
+                background-size: cover;
+                background-position: center;
+                width: 50%;
+    
+                &.izq{
+                    background-image: url("../img/portada-1.jpg");
+                    background-position: left;
+                }
+    
+                &.der{
+                    background-image: url("../img/portada-4.jpg");
+                    opacity: 0.8;
+                }
+
+                .overlay{
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: fade(@negro-costum, 70%);
+                    position: relative;
+                    cursor: pointer;
+                    -webkit-transition: all 0.3s ease;
+                    -moz-transition: all 0.3s ease;
+                    -o-transition: all 0.3s ease;
+                    transition: all 0.3s ease;
+
+                    &:hover{
+                        opacity: 1;
+                    }
+
+                    i{//aqui accedemos al ícono
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 1.5625rem;
+                    }   
+                }
+            }
+
+            .texto{ //Accederemos al texto de la derecha de la imagen de los macarones
+                width: 50%;
+                padding: 3.375rem; // 53px/16px = 3.375rem
+
+                h2{
+                    font-size: 1.8125rem; // 29px/16px = 1.8125rem
+                    font-weight: 400;
+                    line-height: 2.6875rem; // 43px/16px = 2.6875rem
+                    margin-bottom: 1.125rem; // 18px/16px = 1.125rem
+                }
+
+                p{
+                    font-size: 0.9375rem; // 15px/16px = 0.9375rem
+                    line-height: 1.25rem; // 28px/16px = 1.75rem
+                }
+            }
+
+            .foto-full{
+                width: 100%;
+                min-height: 15.25rem; // 243px/16px = 15.25rem
+                background-size: cover;
+                background-position: center;
+
+                &.izq{
+                    background-image: url("../img/portada-2.jpg");
+                    opacity: 0.8;
+                }
+
+                &.der{
+                    background-image: url("../img/portada-3.jpg");
+                }
+
+                .overlay{
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: fade(@negro-costum, 70%);
+                    position: relative;
+                    cursor: pointer;
+                    -webkit-transition: all 0.3s ease;
+                    -moz-transition: all 0.3s ease;
+                    -o-transition: all 0.3s ease;
+                    transition: all 0.3s ease;
+
+                    &:hover{
+                        opacity: 1;
+                    }
+
+                    i{//aqui accedemos al ícono
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 1.5625rem;
+                    }   
+                }
+            }
+        }
+    }
+
+    /* Estilo de Nosotros */
+    .nosotros{
+        padding: 5.625rem;
+
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .col.izq{
+            width: 30%;
+            border-right: 1px solid #000000;
+            display: flex;
+            align-items: center;
+            padding-right: 5%;
+        }
+
+        .col.der{
+            width: 70%;
+            padding-left: 5%;
+
+            .texto{
+                p{
+                    font-size: 1.125rem;
+                    line-height: 1.75;
+                    color: @texto-claro;
+                }
+            }
+        }
+    }
+
+    /* Chef */
+    .chef{
+        background-color: @negro-costum;
+        padding: 5.625rem 0;
+    
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .col{
+                width: 50%;
+
+                &.izq{
+                    box-shadow: 0px 9px 32px -1px rgba(0, 0, 0, 0.5);
+                    overflow: hidden;
+                }
+
+                .titulo-seccion{
+                    padding: 3.125rem;
+                    padding-right: 0;
+
+                    h2{
+                        color: @blanco;
+                    }
+
+                    p{
+                        color: fade(@blanco, 70%);
+                        padding-bottom: 1.125rem;
+                        font-size: 1.125rem;
+                        line-height: 1.75;
+
+                        &:last-child{
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+
+                .slider{
+                    width: 300%;
+                    display: flex;
+
+                    .slide{
+                        width: 100%;
+                        min-height: 400px;
+                        background-size: cover;
+                        background-position: center;
+
+                        &.foto1{
+                            background-image: url('../img/chef-1.jpg');
+                        }
+
+                        &.foto2{
+                            background-image: url('../img/chef-2.jpg');
+                        }
+
+                        &.foto3{
+                            background-image: url('../img/chef-3.jpg');
+                        }
+                    }
+                }
+            }
+        }
+    }/* Chef */
+
+    /* Menu de platos */
+    .menu-platos{
+        padding: 5.625rem 0; // Le damos un padding de 5.625rem arriba y abajo
+
+        .container{
+            .titulo-seccion{
+                h2{
+                    text-align: center;
+                }
+            }
+
+            .contenedor-menu{
+                margin-top: 2.5rem; // 40px/16px = 2.5rem
+
+                .encabezado{
+                    font-weight: 600;
+                    font-family: @fuente-secundaria;
+                    letter-spacing: 0.1em; // Espaciado entre letras
+                    text-transform: uppercase; // Poner en mayúsculas
+                    list-style: none; // Quitar los puntos de la lista
+                    display: flex; // Mostrar en fila
+                    justify-content: center; // Espacio entre los elementos
+
+                    li{
+                        a{
+                            font-size: 0.75rem; // 12px/16px = 0.75rem
+                            padding: 0 1.43rem 1.125rem 1.4375rem; // 23px/16px = 1.4375rem
+                            display: block; // Mostrar como bloque
+                            cursor: pointer; // Cambiar el cursor al pasar por encima
+                            transition: all 0.3s ease; // Transición suave al pasar por encima
+                            border-bottom: 2px solid transparent; // Espacio para el borde
+
+                            &:hover{
+                                color: @dorado; // Cambiar el color al pasar por encima
+                            }
+                        }
+
+                        &.active{// Clase para el elemento activo
+                            a{
+                                color: @dorado; // Cambiar el color del elemento activo
+                                border-bottom: 2px solid @dorado; // Borde debajo del elemento activo
+                            }
+
+                        }
+                    }
+                }
+
+                .contenido{
+                    max-width: 50rem; // 800px/16px = 50rem
+                    margin: 0 auto; // Centrar el contenido
+                    margin-top: 2.5rem; // 40px/16px = 2.5rem
+                    border: 6px double @gris-claro; // Borde doble de 6px de grosor
+                    padding: 0 2.25rem; // 36px/16px = 2.25rem
+
+                    >div{ // Accedemos a los divs hijos directos
+                        display: none; // Ocultamos todos los divs por defecto
+                        transition: all 0.3s ease; // Transición suave al mostrar u ocultar
+                    }
+
+                    .active{ // Clase para el div activo
+                        display: block; // Mostramos el div activo
+                    }
+                }
+
+                .item{
+                    display: flex; 
+                    justify-content: space-between; // Espacio entre los elementos
+                    flex-wrap: wrap; // Permitir que los elementos se ajusten a varias líneas
+                    align-items: center; // Alinear los elementos al centro
+                    padding: 2.25rem 0; // 36px/16px = 2.25rem arriba y abajo
+                    border-bottom: 3px solid @gris-claro; // Borde inferior de 1px
+
+                    .col.izq{
+                        width: 70%;
+
+                        h3{
+                            font-size: 1.5rem; // 24px/16px = 1.5rem
+                            font-weight: 400; // Peso de la fuente;
+                            margin-bottom: 0.625rem; // 10px/16px = 0.625rem
+                        }
+
+                        p{
+                            font-size: 1rem; // 16px/16px = 1rem
+                            color: #28272777;
+                        }
+                    }
+                       
+                    .col.der{
+                        width: 30%;
+                        text-align: center; // Centrar el texto
+                        font-size: 2rem; // 32px/16px = 2rem
+                    }
+                }
+            }
+        }
+    }/* Menu de platos */
+
+    /* Contacto */
+    .contacto{
+
+        .datos{
+            padding: 5.625rem 0 11.875rem  0;
+            position: relative; // Posicionamos el contenedor para que los elementos hijos se posicionen relativos a este
+            background-image: url('../img/contacto-bg.jpg');
+            background-size: cover; // Cubrir todo el contenedor
+            background-position: center; // Centrar la imagen de fondo
+
+            .overlay{
+                position: absolute; // Posicionamos el overlay de forma absoluta
+                width: 100%; // Ancho completo
+                height: 100%; // Alto completo
+                background: fade(@negro-costum, 30%); // Fondo
+                top: 0; // Posicionamos en la parte superior
+                z-index: 1; // Ponemos un z-index para que esté por encima de los demás elementos
+            }
+
+            .container{
+                position: relative;
+                z-index: 2; // Ponemos un z-index para que esté por encima del overlay
+                display: flex; // Mostramos los elementos en fila
+                justify-content: space-between;
+                flex-wrap: wrap; // Permitir que los elementos se ajusten a varias líneas
+
+                .blurb{
+                    background: @blanco; // Fondo blanco
+                    border: 6px double @gris-claro; // Borde doble de 6px de grosor
+                    padding: 2.25rem; // 36px/16px = 2.25rem
+                    text-align: center; // Centrar el texto
+                    width: 25%; // Ancho del 25%
+                }
+
+                h3{
+                    font-size: 1.5rem; // 24px/16px = 1.5rem
+                    font-weight: 400; // Peso de la fuente
+                    line-height: 2.6875rem; // 43px/16px = 2.6875rem
+                    margin-bottom: 0.625rem; // 10px/16px = 0.625rem
+                    border-bottom: 1px solid @gris-claro; // Borde inferior de 1px
+                }
+            }
+        }
+
+        .formulario{
+            position: relative; // Posicionamos el contenedor para que los elementos hijos se posicionen relativos a este
+            z-index: 3; // Ponemos un z-index para que esté por encima del overlay
+            background: @blanco; // Fondo blanco
+            max-width: 40.625rem; // 650px/16px = 40.625rem;
+            margin: 0 auto; // Centrar el formulario
+            padding: 2.25rem; // 36px/16px = 2.25rem
+            margin-top: -6.25rem; // 100px/16px = 6.25rem para que se superponga con el overlay
+            width: 90%; // Ancho del 90% del contenedor
+
+            .formulario_contacto{
+                .input-group{
+                    position: relative; // Posicionamos el contenedor para que los elementos hijos se posicionen relativos a este
+                    margin-bottom: 2rem; // Espacio entre los grupos de inputs
+
+                    input[type="text"],
+                    input[type="email"],
+                    textarea{
+                        font-family: @fuente-secundaria; // Fuente secundaria
+                        font-size: 1rem; // 16px/16px = 1rem
+                        color: @texto-oscuro; // Color del texto
+                        width: 100%; // Ancho completo
+                        outline: none; // Sin borde al hacer foco
+                        padding: 0.9375rem 0;
+                        background: none; // Sin fondo
+                        border: none;
+                        border-bottom: 2px solid fade(@dorado, 50%); // Borde inferior de 2px de grosor y color dorado
+                        vertical-align: top;
+
+                        &:focus{
+                            border-bottom: 2px solid @dorado; // Cambiamos el borde inferior al hacer foco
+                        }
+                    }
+
+                    textarea{
+                        max-width: 100%; // Ancho máximo del 100%
+                        max-height: 10.25rem; // 163px/16px = 10.25rem
+                        min-height: 5.125rem; // 82px/16px = 5.125rem
+                        min-width: 100%; // Ancho mínimo del 100%
+                    }
+
+                    label{
+                        color: @texto-claro; // Color del texto
+                        font-family: @fuente-secundaria; // Fuente secundaria
+
+                        &.label{
+                            position: absolute; // Posicionamos el label de forma absoluta
+                            top: 1rem; // 16px/16px = 1rem
+                            left: 0; // Posicionamos el label a la izquierda
+                            font-size: 1rem; // 16px/16px = 1rem
+                            line-height: 1rem; // 16px/16px = 1rem
+                            margin-left: 1rem; // 16px/16px = 1rem
+                            transition: all .3s ease; // Transición suave al hacer foco
+
+                            &.active{
+                                top: -0.75rem; // 12px/16px = 0.75rem
+                                margin-left: 0; // Sin margen a la izquierda
+                                font-size: 0.75rem; // 12px/16px = 0.75rem
+                                line-height: 0.75rem; // 12px/16px = 0.75rem
+                                color: @texto-claro; // Color del texto
+                            }
+
+                        }
+                    }
+
+                    // Crearemos un campo error para mostrar errores en el formulario
+                    .error{
+                        position: absolute;
+                        color: rgb(255, 59, 59);
+                        font-family: @fuente-secundaria;
+                        font-size: 0.875rem; // 14px/16px = 0.875rem
+                    }
+                }
+
+                input[type="submit"]{
+                    font-family: @fuente-secundaria; // Fuente secundaria
+                    background: @dorado; // Fondo dorado
+                    color: @blanco; // Color del texto
+                    border-radius: 5px; // Bordes redondeados de 5px
+                    border: 2px solid @blanco; // Borde de 2px de grosor y color blanco
+                    cursor: pointer;
+                    display: block; // Mostrar como bloque
+                    margin: 0 auto; // Centrar el botón;
+                    margin-top: 3.125rem; // 50px/16px = 3.125rem
+                    padding: 0.9375rem; // Para arriba y abajo y 0 para los lados
+                    width: 20%;
+                    outline: none; // Sin borde al hacer foco
+                    transition: all .3s ease; // Transición suave al hacer foco
+
+                    &:hover{
+                        background: darken(@dorado, 10%); // Cambiamos el fondo al pasar por encima
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*-----------------------*/
+/*  Pie de página        */
+/*-----------------------*/
+
+footer{
+    margin-top: 2.24rem; // Espacio entre el main y el footer
+    background: @negro-costum; // Fondo
+    padding: 5.625rem 0; // Padding arriba y abajo y 0 a los lados
+    text-align: center; // Centrar el texto
+    color: @blanco; // Color del texto
+
+    .bottom-redes{ // Redes sociales del pie de pagina
+        margin-top: 1.25rem; // Espacio entre el texto y las redes sociales
+
+        a{
+            padding: 0 0.5625rem; // Espacio entre los iconos de las redes sociales
+            color: @blanco; // Color del texto
+            transition: all .3s ease; // Transición suave al pasar por encima
+
+            &:hover{
+                color: @dorado; // Cambiamos el color al pasar por encima
+            }
+        }
+    }
+}
+
+/*-----------------------*/
+/*  Media Queries        */
+/*-----------------------*/
+
+@media all and (max-width: 1500px){
+    .main{
+        .portada{
+            .col{
+                .texto{
+                    padding-left: 2.25rem; // Espacio que hay entre la izquierda
+                    padding-right: 2.25rem; // Espacio que hay entre la derecha
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 1200px){
+    .main .portada .col .foto{
+        display: none;
+    }
+
+    .main .portada .col .texto{
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 900px){
+    .main .nosotros .container .col.izq{
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid @gris-claro;
+        text-align: center;
+        display: block;
+        padding: 0;
+        margin-bottom: 2.25rem;
+    }
+
+    .main .container .col.der{
+        width: 100%;
+        padding-left: 0;
+        text-align: justify;
+    }
+
+    .main .contacto .datos .container .blurb{
+        width: 100%;
+        max-width: 40.625rem; // 640px/16px = 40.625rem
+        margin: 0 auto;
+        margin-bottom: 2.25rem;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media all and (max-width: 800px){
+    header{
+        .menu-bar-pc{
+            display: none;
+        }
+
+        .menu-bar-movil{
+            display: flex;
+        }
+    }
+
+    .main .portada .col{
+        width: 100%;
+
+        .foto-full.izq{
+            display: none;
+        }
+
+        .texto{
+            h2{
+                text-align: center;
+            }
+
+            p{
+                text-align: justify;
+            }
+        }
+    }
+
+    .main .chef .container .col{
+        width: 100;
+    }
+
+    .main .chef .container .col .titulo-seccion{
+        padding-left: 0;
+        padding-bottom: 0;
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 500px){
+    .titulo-seccion{
+        h2{
+            font-size: 2rem;
+        }
+    }
+
+    .main .nosotros .container .col.der .texto p{
+        font-size: 1rem;
+    }
+
+    .main .chef .container .col .titulo-seccion p{
+        font-size: 1rem;
+    }
+
+    .main .menu-platos .container .contenedor-menu .contenido .item .col.izq{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.625rem;
+    }
+
+    .main .menu-platos .container .contenedor-menu .contenido .item .col.der{
+        width: 100%;
+    }
+
+    .main .contacto .formulario .formulario_contacto input[type="submit"]{
+        width: 100%;
+    }
+}

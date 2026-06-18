@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Estándar</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <main class="calculadora">
+    <header>
+      <h1>Calculadora</h1>
+    </header>
+
+    <section class="pantalla" aria-live="polite" aria-atomic="true">
+      <div id="historial" class="historial" aria-label="Historial de operaciones"></div>
+      <div id="display" class="display" aria-label="Resultado actual">0</div>
+    </section>
+
+    <section class="teclado">
+      <button type="button" data-action="clear" class="btn util ac" aria-label="Borrar todo">AC</button>
+      <button type="button" data-action="delete" class="btn util" aria-label="Borrar último dígito">DEL</button>
+      <button type="button" data-action="percent" class="btn util" aria-label="Porcentaje">%</button>
+      <button type="button" data-action="operator" data-value="/" class="btn operador" aria-label="Dividir">÷</button>
+
+      <button type="button" data-action="number" data-value="7" class="btn" aria-label="Siete">7</button>
+      <button type="button" data-action="number" data-value="8" class="btn" aria-label="Ocho">8</button>
+      <button type="button" data-action="number" data-value="9" class="btn" aria-label="Nueve">9</button>
+      <button type="button" data-action="operator" data-value="*" class="btn operador" aria-label="Multiplicar">×</button>
+
+      <button type="button" data-action="number" data-value="4" class="btn" aria-label="Cuatro">4</button>
+      <button type="button" data-action="number" data-value="5" class="btn" aria-label="Cinco">5</button>
+      <button type="button" data-action="number" data-value="6" class="btn" aria-label="Seis">6</button>
+      <button type="button" data-action="operator" data-value="-" class="btn operador" aria-label="Restar">−</button>
+
+      <button type="button" data-action="number" data-value="1" class="btn" aria-label="Uno">1</button>
+      <button type="button" data-action="number" data-value="2" class="btn" aria-label="Dos">2</button>
+      <button type="button" data-action="number" data-value="3" class="btn" aria-label="Tres">3</button>
+      <button type="button" data-action="operator" data-value="+" class="btn operador" aria-label="Sumar">+</button>
+
+      <button type="button" data-action="toggle-sign" class="btn util" aria-label="Cambiar signo">±</button>
+      <button type="button" data-action="number" data-value="0" class="btn" aria-label="Cero">0</button>
+      <button type="button" data-action="decimal" class="btn" aria-label="Punto decimal">.</button>
+      <button type="button" data-action="calculate" class="btn igual" aria-label="Calcular resultado">=</button>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

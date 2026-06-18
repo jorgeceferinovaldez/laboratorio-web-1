@@ -1,0 +1,23 @@
+# Archivos del sistema de macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Iconos e información de carpetas
+Icon_
+._*
+
+# Archivos temporales y de miniaturas
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directorios de red y volúmenes remotos
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items

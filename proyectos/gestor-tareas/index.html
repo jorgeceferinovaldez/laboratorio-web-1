@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gestor de Tareas</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<h1>Gestor de tareas</h1>
+<div id="counter">Activas: 0 | Completadas: 0 | Total: 0</div>
+
+<ul id="task-list"></ul>
+
+<form id="add-form" onsubmit="return false;">
+    <input type="text" id="add-input" placeholder="Nueva tarea" autocomplete="off" />
+    <button type="button" id="add-btn">Añadir tarea</button>
+</form>
+
+<button id="clear-all">Borrar todo</button>
+<script src="js/script.js"></script>
+</body>
+</html>
