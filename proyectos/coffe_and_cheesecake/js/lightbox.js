@@ -84,7 +84,7 @@ var metLigthbox = {
 
         //Agregamos el codigo de creación del boton de cierre de la ventana modal
         //propLigthbox.modal.innerHTML += '<i id="cerrar_modal" class="fa fa-times" aria-hidden="true"></i>';
-        propLigthbox.modal.innerHTML += '<i id="cerrar_modal" class="fa-solid fa-xmark"></i>';
+        propLigthbox.modal.innerHTML += '<i id="cerrar_modal" class="fa fa-times" aria-hidden="true"></i>';
 
         //Obtengamos la referencia del boton 
         propLigthbox.cerrarModal = document.getElementById('cerrar_modal');

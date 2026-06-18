@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: ;
+}
+
+.padre{
+    width: 80%;
+    max-width: 800px;
+    height: 500px;
+    background-color: green;
+
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+
+    justify-content: space-around;
+
+    align-items: baseline;
+}
+
+.caja{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 20px;
+    padding: 10px;
+    font-size: 50px;
+    text-align: center;
+}

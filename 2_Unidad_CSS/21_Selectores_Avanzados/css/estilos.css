@@ -1,0 +1,36 @@
+/* SELECTORES AVANZADOS */
+
+/* Selector universal todos los elementos */
+/*
+*{
+    color:red;
+}
+*/
+
+/* Selector adyacente: Elemento precedido por otro elemento */
+/*
+h1 + h2{
+    color: red;
+}
+*/
+
+/* Selector de hermanos: Elemento hermano de otro elemento */
+/*
+h1 ~ h2{
+    color: red;
+}
+*/
+
+/* Selectores descendente: Aplica a elementos contenidos por el otro elemento indicado sin ser estrictamente hijo directo */
+/* Lo vamos a utilizar bastante */
+/*
+section p{
+    color:red;
+}
+*/
+
+/* Selector de hijo directo: Aplica la propiedad al hijo directo */
+/* Similar pero con hijos directos */
+section > p{
+    color:red;
+}

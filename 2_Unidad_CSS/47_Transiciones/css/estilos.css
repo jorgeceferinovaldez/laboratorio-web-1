@@ -1,0 +1,29 @@
+/* 1ero */
+.cuadro{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 50px;
+
+    /* 3ero */
+    /* transition: background-color 1s ease; */
+    /* 5to */
+    /* transition: all 1s ease;  */
+    /* 4to */
+    /* transition-delay: 2s; */
+}
+
+/* 2do recodemos las psedoclases */
+.cuadro:hover{
+    background-color: red;
+
+    /* 5to */
+    /* width: 500px;  */
+
+    /* 6to */
+    /* transform: scale(2,2); */
+    /* 7mo */
+    /* transform: rotate(50deg); */
+}
+/* Pero vemos que cuando cambia el color lo hace bruscamente */
+/* Usaremos las transiciones punto 3ero */

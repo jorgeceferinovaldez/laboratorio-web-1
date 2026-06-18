@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.caja{
+    width: 200px;
+    height: 200px;
+    background-color: #dddddd;
+    margin: 20px;
+}
+
+.padre{
+    width: 500px;
+    height: 500px;
+    background-color: purple;
+    position: relative;
+}
+
+/* 
+POSICION ESTATICA
+Posicion por defecto
+*/
+
+/* POSICION RELATIVA */
+/*.posicionada{
+    background-color: green;
+    position: relative;
+    left: 200px;
+    top: 20px;
+    right: ;
+    bottom: ;
+}*/
+
+/* POSICION ABSOLUTA */
+/*
+.posicionada{
+    background-color: green;
+    position: absolute;
+    left: ;
+    top: 20px;
+    right: 20px;
+    bottom: ;
+}
+*/
+
+/* POSICION FIJA */
+/*
+.posicionada{
+    background-color: green;
+    position: fixed;
+    left: ;
+    top: 0%;
+    right: 0%;
+    bottom: ;
+}
+*/
+
+/* Sin relacion a BODY */
+.posicionada{
+    background-color: green;
+    position: absolute;
+    left: ;
+    top: ;
+    right: ;
+    bottom: 0;
+}

@@ -1,0 +1,52 @@
+ul li{
+    list-style-type: none;
+    display: inline;
+}
+
+a{
+    display: inline-block;
+    background-color: #01413a;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* 1er pseudoelemento es para seleccionar la primera linea 
+de cada parrafo por ejemplo */
+
+p::first-line{
+    color:red;
+}
+
+/* otro pseudolelemento que tenemos se llama first-letter */
+p::first-letter{
+    color: green;
+}
+
+/* otro */
+p::selection{
+    color: white;
+    background-color: black;
+}
+
+/* otro before, funciona para añadir contenido antes*/
+p::before{
+    content: "Esto es un elemento antes";
+    display: block;
+    color: white;
+    background-color: black;
+}
+
+/* otro after */ 
+p::after{
+    /* content: "Esto es un elemento despues"; */
+    content: " ";
+    display: block;
+    color: white;
+    background-color: black;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    top: 10px;
+}

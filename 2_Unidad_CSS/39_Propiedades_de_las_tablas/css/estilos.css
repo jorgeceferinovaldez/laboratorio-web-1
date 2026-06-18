@@ -1,0 +1,38 @@
+/* 1ero sin estilos */
+
+/* 2do. a. Bordes de la tabla */
+/* table{
+    border: 1px solid black;
+} */
+
+/* 2do. b. Aplicaremos a los otros elementos de la tabla */
+/* table, tr, th, td {
+    border: 1px solid black;
+} */
+
+/* 2do. c. Los bordes son dobles, para evitar eso usaremos: */
+/* table{
+    border-collapse: collapse;
+    width: 80%;
+} */
+
+/* 2do. d.Añadiremos ancho y alto a cada celda */
+/* td, th{
+    height: 50px; 
+    text-align: center; 
+    vertical-align: middle; 
+} */
+
+/* 3ero. Podemos darles propiedades a una fila y a otras no */
+/* 
+    even = pares 
+    odd = impares 
+*/
+/* tr:nth-child(even){
+    background-color: mediumaquamarine;
+} */
+
+
+/* th{
+    background-color: rgb(144, 56, 56);
+} */

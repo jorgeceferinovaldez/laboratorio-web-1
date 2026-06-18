@@ -1,0 +1,47 @@
+.contenedor-padre{
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    margin: auto;
+
+    color: #ffffff;
+
+    /* Imagen de fondo */
+    background-image: url(../img/eldenring.jpg);
+    /*background-size: 20%;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* 1ero. Estilizaremos las aristas */
+    /* Es una propiedad que si necesita prefix */
+    /* border-radius: 50px 50px 50px 50px; */
+    /* Cada valor corresponde a cada esquina en sentido horario */
+    /* box-shadow: 5px 3px #000000; */
+
+}
+
+.contenedor-hijo{
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 100%;
+    height: 300px;
+    padding-top: 100px;
+
+    text-align: center;
+
+    /* 2do.  estilizar las aristas al hijo igual */
+    /* border-radius: 50px 50px 50px 50px; */
+}
+
+/* Darle degradado */
+.contenedor-hijo{
+    /* 3er. Degradado lineal */
+    /* background: linear-gradient(#ffffff, black, purple); */
+
+    /* Degrado radial */
+    /*background: radial-gradient(#ffffff, black, purple);*/
+    /* 5to. sombra de las cajas  */
+    box-shadow: 5px 30px #000000;
+}
+
+/* 4to. Para generar degradados usaremos una herramiena CSSmatic */

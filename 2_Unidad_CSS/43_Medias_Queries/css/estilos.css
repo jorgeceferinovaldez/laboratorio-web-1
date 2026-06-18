@@ -1,0 +1,59 @@
+/* MEDIA QUERIES */
+/* 1ero. Algunos ya que son muchos. */
+/*
+print - Vista de Impresión.
+min-width - Tamaño mínimo en horizontal.
+max-width - Tamaño máximo en horizontal.
+min-height - Tamaño mínimo en vertical.
+max-height - Tamaño máximo en vertical.
+orientation - Posición en la que se encuentre el dispositivo.
+resolution - Tamaño ocupado por el browser en píxeles.
+color - Detecta si la pantalla en que se visualiza el sitio es a color o en blanco y negro.
+light-level - Densidad de la luz del dispositivo.
+*/
+
+/* 1- Vista previa de impresion */
+/*
+@media print{
+    img{
+        width: 100%;
+    }
+
+    h1{
+        color: red;
+        text-align: center;
+    }
+}
+*/
+/* 2- Para la pantalla */
+/*
+@media screen{
+    img{
+        width: 50%;
+    }
+
+    h1{
+        color: violet;
+        text-align: right;
+    }
+}
+*/
+
+/* 5to */
+/* img{
+    width: 50%;
+} */
+
+/* 4to */
+/* @media all and (min-width:420px) and (max-width:720px){
+    img{
+        width: 80%;
+    }
+} */
+
+/* 3ero  */
+/* @media all and (max-width:480px){
+    img{
+        width: 100%;
+    }
+} */

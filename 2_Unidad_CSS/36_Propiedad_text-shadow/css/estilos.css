@@ -1,0 +1,55 @@
+/* 1ero. Propiedad de sombras al texto */
+h1, p{
+    text-shadow: 5px 5px 3px black;
+    /* 1er valor el desplazamiento de la sombra hacia la derecha
+    2do valor el desplazamiento de la sombra hacia abajo
+    3er valor la intensidad de la sombra
+    4to */
+}
+
+/* 2do. */
+/* PREFIJOS DE LOS NAVEGADORES */
+/* SON PEQUEÑAS MODIFICACIONES QUE ANTEPONEMOS 
+    A TODAS LAS PROPIEDADES CSS QUE NO SON BIEN INTERPRETADOS POR LOS NAVEGADORES */
+
+/*
+
+-moz-: Para navegadores basados en Gecko como Mozilla
+
+-webkit-: Para navegadores basados en Webkit, como Chrome
+
+-o-: Para Opera
+
+-ms-: Para Internet Explorer y Edge
+
+*/ 
+
+img{
+    /* 2do. a */
+    width: 500px;
+
+    /* 2do. c */
+    -webkit-box-shadow: 5px 5px 3px #b01a1a;
+    -moz-box-shadow: 5px 5px 3px #b01a1a;
+    -o-box-shadow: 5px 5px 3px #b01a1a;
+    -ms-box-shadow: 5px 5px 3px #b01a1a;
+    /* 2do b. Agregamos la sombra para la imagen */
+    box-shadow: 5px 5px 3px #b01a1a;
+}
+
+/* 2do. d (ACTUALIZADO) */
+/* La librería prefixfree.js está en desuso porque procesar los prefijos con JavaScript en el navegador afectaba el rendimiento. */
+/* Además, hoy en día los navegadores modernos ya soportan la gran mayoría de las propiedades CSS sin requerir prefijos (-webkit-, -moz-, etc.). */
+
+/* Para mantener la compatibilidad sin penalizar el rendimiento, la solución actual es compilar el CSS antes de subirlo: */
+
+/* OPCIÓN 1 (Estándar de la industria): Autoprefixer */
+/* 1.- Se utiliza como un plugin de PostCSS dentro de entornos de trabajo modernos (Vite, Webpack, Gulp). */
+/* 2.- La herramienta lee tus reglas CSS y añade los prefijos necesarios automáticamente al compilar tu proyecto, basándose en los datos de "Can I Use". */
+
+/* OPCIÓN 2 (Para proyectos simples sin empaquetadores): Extensiones de Editor */
+/* 1.- Ve a tu editor de código (por ejemplo, VS Code). */
+/* 2.- Busca e instala la extensión llamada "Autoprefixer" o "Live Sass Compiler" (si usas Sass). */
+/* 3.- Al guardar tu archivo .css, la extensión generará los prefijos automáticamente en el archivo final. */
+
+/* IMPORTANTE: Con estas herramientas, ya no es necesario descargar scripts adicionales ni enlazar ningún archivo .js en tu HTML para los estilos. */

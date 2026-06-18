@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Laboratorio Web I - Formularios</title>
+  </head>
+  <body>
+
+    <form>
+      <fieldset>
+        <legend>Mi Formulario</legend>
+
+        <!-- Campo de nombre -->
+        <p>
+          <label for="camponombre">Nombre:</label>
+          <input type="text" name="nombre" id="camponombre"       placeholder="Escribe tu nombre" required>
+          <!--
+          <label for="camponombre">Nombre:</label>
+          <input type="text" name="nombre" id="camponombre"       placeholder="Escribe tu nombre" autofocus>
+
+          <label for="camponombre">Nombre:</label>
+          <input type="text" name="nombre" id="camponombre"       placeholder="Escribe tu nombre" disabled>
+
+          <label for="camponombre">Nombre:</label>
+          <input type="text" name="nombre" id="camponombre"       placeholder="Escribe tu nombre">
+          -->
+        </p>
+
+        <!-- Campo de contraseña -->
+        <p>
+          <label for="contrasenia">Contraseña:</label>
+          <input type="password" name="contrasenia" id="contrasenia" placeholder="Ingrese su contraseña">
+        </p>
+
+        <!-- Campo de email -->
+        <p>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder="Ingrese su email" maxlength="3">
+          <!--
+          <input type="email" name="email" id="email" placeholder="Ingrese su email">
+          -->
+        </p>
+
+        <!-- Campo de fecha -->
+        <p>
+          <label for="fecha">Fecha:</label>
+          <input type="date" name="fecha" id="fecha" placeholder="Ingrese la fecha">
+        </p>
+
+        <!-- Campo de hora local -->
+        <p>
+          <label for="horal">Fecha - hora local:</label>
+          <input type="datetime-local" name="horal" name="horal" placeholder="Ingrese la hora">
+        </p>
+
+        <!-- Campo de archivo -->
+        <p>
+          <label for="archivo">Subir archivo:</label>
+          <input type="file" name="archivo" id="archivo">
+        </p>
+
+        <!-- Campo de mes -->
+        <p>
+          <label for="mes">Mes:</label>
+          <input type="month" name="mes" id="mes">
+        </p>
+
+        <!-- Campo de número -->
+        <p>
+          <label for="numero">Número:</label>
+          <input type="number" name="numero" id="numero" placeholder="Ingrese un número" step="2">
+          <!--
+          <input type="number" name="numero" id="numero" placeholder="Ingrese un número" max="10" min="5">
+
+          <input type="number" name="numero" id="numero" placeholder="Ingrese un número">
+          -->
+        </p>
+
+        <!-- Campo de rango -->
+        <p>
+          <label for="rango">Rango:</label>
+          <input type="range" name="rango" id="rango">
+        </p>
+
+        <!-- Campo de buscar -->
+        <p>
+          <label for="buscar">Buscar:</label>
+          <input type="search" name="buscar" id="buscar">
+        </p>
+
+        <!-- Campo de telefono -->
+        <p>
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" name="telefono" id="telefono">
+        </p>
+
+        <!-- Campo de hora -->
+        <p>
+          <label for="hora">Hora:</label>
+          <input type="time" name="hora" value="hora">
+        </p>
+
+        <!-- Corte -->
+
+        <!-- Campo de URL -->
+        <p>
+          <label for="url">URL:</label>
+          <input type="url" name="url" id="url">
+        </p>
+
+        <!-- Campo de semana -->
+        <p>
+          <label for="semana">Semana:</label>
+          <input type="week" name="semana" id="semana">
+        </p>
+
+        <!-- Campo especiales  -->
+
+        <!-- Campo de selección -->
+        <p>
+          <label for="seleccion">Sleccionar:</label>
+          <select class="" name="seleccion" id="seleccion">
+            <option value="1">Item #1</option>
+            <option value="2">Item #2</option>
+            <option value="3">Item #3</option>
+          </select>
+        </p>
+
+        <!-- Campo de radio -->
+        <p>
+          <label for="comida">Comida:</label>
+          <br>
+          <input type="radio" name="comida" id="comida"> Empanadas
+          <input type="radio" name="comida" id="comida"> Asado
+          <input type="radio" name="comida" id="comida"> Paella
+        </p>
+
+        <!-- Campo de checkbox -->
+        <p>
+          <label for="comida">Comida</label>
+          <input type="checkbox" name="fruta1"> Naranja
+          <input type="checkbox" name="fruta2"> Manzana
+        </p>
+
+        <!-- Campo de color -->
+        <p>
+          <label for="color">Color:</label>
+          <input type="color" name="color" id="color">
+        </p>
+
+        <!-- Campo de Area de texto -->
+        <p>
+          <label for="comentartio">Comentarios:</label>
+          <br>
+          <textarea name="areatexto" id="comentario" rows="8" cols="80"></textarea>
+        </p>
+
+        <!-- Botones del formulario -->
+        <!-- Boton de enviar y reset -->
+        <p>
+          <input type="submit" name="enviar" value="Submit">
+          <input type="reset">
+        </p>
+
+      </fieldset>
+    </form>
+
+  </body>
+</html>

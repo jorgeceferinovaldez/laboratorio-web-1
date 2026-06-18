@@ -1,0 +1,46 @@
+/* 1ero. Alinear texto */
+p{
+    text-align: justify;
+}
+
+
+/* 2do. Indentacion del texto o sangría */
+/* p{
+    text-indent: 100px;
+} */
+
+
+/* 3ero. Decoración del texto */
+/* Revisemos la hoja de trucos y veamos las opciones 
+de text-decoration */
+p{
+    text-decoration:none;
+}
+
+
+/* 4to. Transformar el texto */
+/* Hacemos lo mismo revisando la hoja de trucos */
+p{
+    /*text-transform:lowercase;*/
+}
+
+
+
+/* 5to. Espacio entre letras */
+p{
+    /*letter-spacing: 5px;*/
+}
+
+
+/* 6to. Espacio entre palabras */
+p{
+    /*word-spacing: 5px;*/
+}
+
+
+/* 7mo. Color del texto */
+p{
+    color: red;
+}
+
+

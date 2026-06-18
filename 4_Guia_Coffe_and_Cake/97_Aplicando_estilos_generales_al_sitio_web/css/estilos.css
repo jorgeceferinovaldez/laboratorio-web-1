@@ -1,0 +1,80 @@
+/*-------------------------------------*/
+/* 1. Variables CSS (Custom Properties)*/
+/*-------------------------------------*/
+/* En esta sección declaramos variables  */
+/* reutilizables para colores y fuentes. */
+/* Se definen dentro de :root para que   */
+/* estén disponibles en todo el sitio.   */
+
+:root {
+  --color-negro-custom: #141618;
+  --color-blanco: #fff;
+  --color-texto-oscuro: #303133;
+  --color-texto-claro: #777;
+  --color-dorado: #b4975a;
+  --color-gris-claro: #eaeaea;
+  --fuente-principal: 'Playfair Display', serif;
+  --fuente-secundaria: 'Poppins', serif;
+}
+
+/*-------------------------------------*/
+/* 2. Estilos Generales                */
+/*-------------------------------------*/
+/* Reglas básicas que normalizan la    */
+/* apariencia entre navegadores y        */
+/* preparan los elementos para un        */
+/* diseño responsive.                    */
+
+/* ------------------------------------ */
+/* Reset universal                      */
+/* ------------------------------------ */
+/* El selector * aplica a TODOS los      */
+/* elementos. Reiniciamos márgenes y     */
+/* rellenos y usamos border-box para que */
+/* el padding no aumente el tamaño total.*/
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ------------------------------------ */
+/* Cuerpo del sitio                     */
+/* ------------------------------------ */
+/* Definimos el tamaño de letra base,   */
+/* la fuente principal y el color del   */
+/* texto para toda la página.            */
+
+body {
+  font-size: 16px;
+  font-family: var(--fuente-principal);
+  color: var(--color-texto-oscuro);
+}
+
+/* ------------------------------------ */
+/* Contenedor central                   */
+/* ------------------------------------ */
+/* Limita el ancho del contenido y lo   */
+/* centra horizontalmente con márgenes  */
+/* automáticos.                          */
+
+.container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ------------------------------------ */
+/* Imágenes                             */
+/* ------------------------------------ */
+/* Hacemos que las imágenes sean        */
+/* responsivas y eliminamos el pequeño  */
+/* espacio que aparece debajo de ellas. */
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}

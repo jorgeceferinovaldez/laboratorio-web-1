@@ -1,0 +1,156 @@
+/*-------------------------------------*/
+/* 1. Variables CSS (Custom Properties)*/
+/*-------------------------------------*/
+/* En esta sección declaramos variables  */
+/* reutilizables para colores y fuentes. */
+/* Se definen dentro de :root para que   */
+/* estén disponibles en todo el sitio.   */
+
+:root {
+  --color-negro-custom: #141618;
+  --color-blanco: #fff;
+  --color-texto-oscuro: #303133;
+  --color-texto-claro: #777;
+  --color-dorado: #b4975a;
+  --color-gris-claro: #eaeaea;
+  --fuente-principal: 'Playfair Display', serif;
+  --fuente-secundaria: 'Poppins', serif;
+}
+
+/*-------------------------------------*/
+/* 2. Estilos Generales                */
+/*-------------------------------------*/
+/* Reglas básicas que normalizan la    */
+/* apariencia entre navegadores y        */
+/* preparan los elementos para un        */
+/* diseño responsive.                    */
+
+/* ------------------------------------ */
+/* Reset universal                      */
+/* ------------------------------------ */
+/* El selector * aplica a TODOS los      */
+/* elementos. Reiniciamos márgenes y     */
+/* rellenos y usamos border-box para que */
+/* el padding no aumente el tamaño total.*/
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ------------------------------------ */
+/* Cuerpo del sitio                     */
+/* ------------------------------------ */
+/* Definimos el tamaño de letra base,   */
+/* la fuente principal y el color del   */
+/* texto para toda la página.            */
+
+body {
+  font-size: 16px;
+  font-family: var(--fuente-principal);
+  color: var(--color-texto-oscuro);
+}
+
+/* ------------------------------------ */
+/* Contenedor central                   */
+/* ------------------------------------ */
+/* Limita el ancho del contenido y lo   */
+/* centra horizontalmente con márgenes  */
+/* automáticos.                          */
+
+.container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ------------------------------------ */
+/* Imágenes                             */
+/* ------------------------------------ */
+/* Hacemos que las imágenes sean        */
+/* responsivas y eliminamos el pequeño  */
+/* espacio que aparece debajo de ellas. */
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+/* ------------------------------------ */
+/* Enlaces                              */
+/* ------------------------------------ */
+/* Quitamos el subrayado por defecto,   */
+/* asignamos el color del texto y       */
+/* añadimos una transición suave cuando */
+/* se pasa el ratón por encima.         */
+
+a {
+  text-decoration: none;
+  color: var(--color-texto-oscuro);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* Al pasar el ratón, el enlace se      */
+/* vuelve semi-transparente.             */
+
+a:hover {
+  color: rgba(48, 49, 51, 0.5);
+}
+
+/*-------------------------------------*/
+/* 3. Encabezado (Header)              */
+/*-------------------------------------*/
+/* Barra de navegación fija en la parte */
+/* superior del sitio.                   */
+
+/* ------------------------------------ */
+/* Barra de menú para escritorio        */
+/* ------------------------------------ */
+/* Fondo blanco, posición fija, altura   */
+/* mínima y borde inferior gris claro.   */
+
+header .menu-bar-pc {
+  background: var(--color-blanco);
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  padding: 0 2.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 5.875rem;
+  border-bottom: 1px solid var(--color-gris-claro);
+}
+
+/* ------------------------------------ */
+/* Logo del sitio                       */
+/* ------------------------------------ */
+
+header .menu-bar-pc .logo {
+  max-width: 3.125rem;
+}
+
+/* ------------------------------------ */
+/* Menú principal                       */
+/* ------------------------------------ */
+/* Espaciado horizontal entre enlaces.   */
+
+header .menu-bar-pc .menu-principal a {
+  padding: 0 0.5625rem;
+}
+
+/* ------------------------------------ */
+/* Redes sociales superiores            */
+/* ------------------------------------ */
+/* Espaciado horizontal entre iconos.   */
+
+header .menu-bar-pc .top-redes a {
+  padding: 0 0.5625rem;
+}

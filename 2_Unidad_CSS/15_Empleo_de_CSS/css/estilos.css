@@ -1,0 +1,22 @@
+/* Primer video */
+
+/* Esto es un comentario */
+
+/* Una regla CSS posee */
+
+/*
+selector{
+	propiedad1:valor;
+	propiedad1:valor;
+	propiedad1:valor;
+}
+*/
+
+/* A partir de aqui va el estilo para index.html */
+h1{
+	color:yellow
+}
+
+p{
+	color:green;
+}

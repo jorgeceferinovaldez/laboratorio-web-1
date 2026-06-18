@@ -1,0 +1,33 @@
+ul li{
+    list-style-type: none;
+    display: inline;
+}
+
+a{
+    display: inline-block;
+    background-color: #01413a;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* pseudoclase son los estados que puede tener un elemento */
+/* por ejemplo cuando pasamos el mouse por arriba */
+a:hover{
+    background-color: green;
+}
+
+/* la siguiente se llama active y funciona cuando presionamos el enlace*/
+a:active{
+    background-color: blue;
+}
+
+/* pseudoclase visited es para cambiar las propiedades de un enlace ya visitado */
+a:visited{
+    background-color: red;
+}
+
+/* ejemplo con los 5 parrafos */
+p:nth-child(3){
+    color:red;
+}

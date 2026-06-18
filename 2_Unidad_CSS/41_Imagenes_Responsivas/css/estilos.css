@@ -1,0 +1,12 @@
+img{
+    /* 1ero. pixeles */
+    /* width: 500px; */
+
+    /*2do. porcentaje */
+    /* width: 100%; */
+
+    /* 3ero. Pero al agrandar la pantalla 
+    la imagen se hace muy grande, entonces
+    usaremos max-width */
+    /* max-width: 500px; */
+}

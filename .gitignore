@@ -1,7 +1,11 @@
+# Ignorar archivos de configuración de Visual Studio Code
+.vscode/
+
 # Archivos del sistema de macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+Thumbs.db
 
 # Iconos e información de carpetas
 Icon_
@@ -15,9 +19,15 @@ Icon_
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+*.tmp
+*.log
 
 # Directorios de red y volúmenes remotos
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+
+# Ignorar archivos de compilación
+dist/
+build/

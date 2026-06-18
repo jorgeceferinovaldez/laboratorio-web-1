@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="author" content="UNPA - UACO">
+    <meta name="keywords" content="desarrollo web, laboratorio web I, UNPA, UACO">
+    <meta name="description" content="Es una asignatura de la tecnicatura universitaria en desarrollo web.">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Evento load</title>
+</head>
+<body>
+
+	<div class="contenedor">
+
+      <h1>Mi formulario</h1>
+
+      <form name="formulario" action="">
+
+      	<div class="input-group">
+      		<input type="text" name="nombre" id="nombre" placeholder="Nombre">
+      	</div>
+
+      	<div class="input-group">
+      		<input type="email" name="email" id="email" placeholder="Correo">
+      	</div>
+
+      	<div class="input-group">
+      		<label for="colorFavorito">Marca esta opción si tienes un color favorito</label>
+      		<input type="checkbox" name="colorFavorito" id="colorFavorito">
+      	</div>
+
+      	<p class="disabled">Selecciona tu color favorito</p>
+
+      	<div class="input-group radio-buttons disabled">
+      		<input type="radio" name="color" id="verde" disabled> <label for="verde">Verde</label>
+      		<input type="radio" name="color" id="azul" disabled> <label for="azul">Azul</label>
+      		<input type="radio" name="color" id="otro" disabled> <label for="otro">Otro</label>
+      	</div>
+
+		<input type="submit" value="Enviar">
+
+      </form>
+
+	  <script src="load.js"></script>
+
+    </div>
+		
+</body>
+</html>

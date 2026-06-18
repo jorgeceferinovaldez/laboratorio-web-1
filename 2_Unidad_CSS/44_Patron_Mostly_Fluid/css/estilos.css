@@ -1,0 +1,43 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #858585;
+}
+
+.contenedor{
+  background-color: white;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  margin:auto;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caja1{
+  width: 100%;
+  background-color: green;
+  height: 300px;
+}
+
+.caja2{
+  width: 50%;
+  background-color: aqua;
+  height: 200px;
+}
+
+.caja3{
+  width: 50%;
+  background-color: blue;
+  height: 200px;
+}
+
+
+@media all and (max-width:420px){
+  .caja2, .caja3{
+    width: 100%;
+  }
+}

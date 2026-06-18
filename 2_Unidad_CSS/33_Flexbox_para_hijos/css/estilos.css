@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 3ero */
+}
+
+.padre{
+    width: 80%;
+    max-width: 800px;
+    /* height: 500px; */
+    background-color: green;
+
+    
+    display: flex; 
+    
+    flex-direction: row; 
+    /* flex-wrap: wrap ; */
+    flex-wrap: nowrap ; 
+    
+    justify-content: center;
+    
+}
+
+.caja{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 20px;
+    padding: 10px;
+    font-size: 50px;
+    text-align: center;
+
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: 100px; /* similar a width */
+
+    flex: 1 1 auto
+
+}
+
+.uno{
+    /*order: 3;*/
+}
+
+.dos{
+    /*order: 2;*/
+    flex-shrink: 2;
+}
+
+.tres{
+    /*order: 1;*/
+}

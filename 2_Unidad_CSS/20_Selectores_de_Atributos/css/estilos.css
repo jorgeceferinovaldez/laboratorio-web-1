@@ -1,0 +1,79 @@
+/* 1 */
+/*
+a[href]{
+    color:red;
+}
+*/
+
+/* 2 */ 
+/*
+a[title]{
+    color:red;
+}
+*/
+
+/* 3 */ 
+/*
+a[href="pagina2.html"]{
+    color:red;
+}
+*/
+
+/* 4 */ 
+/* Que todos los href 
+que terminen en html */
+/*
+a[href$="html"]{
+    color:red;
+}
+*/
+
+/* 5 */ 
+/* Que todos los href 
+que empiezen con la palabra
+pagina */
+/*
+a[href^="pagina"]{
+    color:red;
+}
+*/
+
+/* 6 */ 
+/* Que todos los atributos
+title que tengan la palabra
+dos */
+/*
+a[title~="dos"]{
+    color:red;
+}
+*/
+
+/* 7 */ 
+/* Que todos los atributos
+class que sea igual a social
+*/
+/*
+a[class|="social"]{
+    color:red;
+}
+*/
+
+/* 8 */ 
+/* Selector universal
+Que todos los atributos
+href que tengan la palabra
+pagina en cualquier parte
+del valor */
+/*
+a[href*="pagina"]{
+    color:red;
+}
+*/
+
+/* 9 */ 
+/* cualquier etiqueta que tenga title */
+[title]{
+    color:red;
+}
+
+

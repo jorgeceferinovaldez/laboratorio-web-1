@@ -1,0 +1,22 @@
+.cuadro{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 50px;
+
+    /* 1.- Rotacion */
+    /* transform: rotate(-40deg); */
+
+    /* 2.- Escalar */
+    /* transform: scale(2,2); */
+
+    /* 3.- Trasladar */
+    /* transform: translate(200px,100px); */
+    /* transform: translateY(200px); */
+
+    /* 4.- Torcer - skew */
+    /* transform: skew(20deg, 20deg); */
+
+    /* 5.- Varias transformaciones */
+    /* transform: scale(2, 0.5) translate(100px, 50px) rotate(50deg); */
+}

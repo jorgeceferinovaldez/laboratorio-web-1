@@ -1,0 +1,16 @@
+h1, p, div{
+    background-color: #dddddd;
+    width: 300px;
+    height: 100px;
+    padding: 30px;
+    border: 1px;
+    margin: 10px;
+    /*display: block; /* Por defecto es asi */
+    display: inline-block;
+}
+
+a{
+    background-color: black;
+    color: white;
+    display: inline;
+}

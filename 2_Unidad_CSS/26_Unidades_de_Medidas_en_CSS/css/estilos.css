@@ -1,0 +1,48 @@
+/* UNIDADES DE MEDIDAS RELATIVAS
+
+PX = PIXELES
+
+EM = UNIDAD RELATIVA AL TAMAÑO DE FUENTE DEL CONTENEDOR PADRE O MAS CERCANO
+
+REM = UNIDAD RELATIVA AL TAMAÑO DE FUENTE DEL BODY
+
+% = UNIDAD RELATIVA A LA MEDIDA DEL CONTENEDOR PADRE
+
+*/
+
+body{
+  font-size: 20px;
+}
+
+/* 1er px */
+/*
+p{
+  font-size: 30px;
+}
+*/
+
+/* 2do usando em, */
+/*
+p{
+  font-size: 2em;
+}
+*/
+
+/* quiero que sean 30px de tamaño de fuente del parrafo
+sin cambiar la fuente del body que es 20px
+dividir 30px (parrafo) / 20px (body) = 1.5em
+*/
+
+p{
+  font-size: 1.5em;
+}
+
+.padre{
+  font-size: 30px;
+}
+
+.caja{
+  width: 50%;
+  height: 15rem;
+  background-color: red;
+}

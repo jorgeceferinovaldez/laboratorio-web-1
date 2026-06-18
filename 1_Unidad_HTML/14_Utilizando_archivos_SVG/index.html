@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maxim-scale=1.0">
+    <meta name="author" content="UNPA - UACO">
+    <meta name="keywords" content="desarrollo web, laboratorio web I, UNPA, UACO">
+    <meta name="description" content="Es una asignatura de la tecnicatura universitaria en desarrollo web.">
+    <title>Mi sitio Web - Archivos SVG</title>
+</head>
+<body>
+    <!-- Primer parte 
+    <svg width="400px" height="400px" viewBox="0 0 400 400">
+        <image width="400px" height="400px" xlink:href="img/arduino-logo-1.svg">
+        </image>
+    </svg>
+    -->
+
+    <!-- Segunda parte -->
+    <ul>
+        <li>Circulo</li>
+        <svg width="100px" height="100px" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="red" stroke="black" stroke-width="5">
+
+            </circle>
+        </svg>
+
+        <li>Elipse</li>
+        <svg width="600px" height="200px" viewBox="0 0 600 200">
+            <ellipse cx="300" cy="100" rx="200" ry="50" fill="blue" stroke="black" stroke-width="3"></ellipse>
+        </svg>
+
+        <li>Rectangulo</li>
+        <svg width="600px" height="200px" viewBox="0 0 600 200">
+            <rect x="20" y="20" width="300" height="100" fill="green" stroke="black" stroke-width="3"></rect>
+        </svg>
+
+        <li>Linea</li>
+        <svg width="600px" height="200px" viewBox="0 0 600 200">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="yellow" stroke-width="3"></line>
+        </svg>
+
+    </ul>
+    
+    <!-- Tercera Parte -->
+    <!-- Etiquetas adicionales para SVG -->
+    <svg width="600px" height="200px" viewBox="0 0 600 200">
+        <g id="grupo1" fill="green" stroke="blue" stroke-width="5">
+            <circle cx="50" cy="50" r="40"></circle>
+            <rect x="120" y="20" width="300" height="100"></rect>
+        </g>
+    </svg>
+    
+    <!-- Gradiente -->
+    <svg width="600px" height="200px" viewBox="0 0 600 200">
+        <defs>
+            <linearGradient id="colorendegrade">
+                <stop offset="10%" stop-color="red"></stop>
+                <stop offset="90%" stop-color="yellow"></stop>
+            </linearGradient>
+        </defs>
+
+        <circle cx="50" cy="50" r="40" fill="url(#colorendegrade)" stroke="black" stroke-width="5"></circle>
+        <rect x="120" y="20" width="300" height="100" fill="url(#colorendegrade)" stroke="black" stroke-width="3"></rect>
+    </svg>
+
+    <svg width="600px" height="200px" viewBox="0 0 600 200">
+        <defs>
+            <rect id="cuadro" width="50" height="50" fill="red" stroke="black" stroke-width="3"></rect>    
+        </defs>
+
+        <use xlink:href="#cuadro" x="20" y="20"></use>
+        <use xlink:href="#cuadro" x="100" y="100"></use>
+    </svg>
+
+</body>
+</html>

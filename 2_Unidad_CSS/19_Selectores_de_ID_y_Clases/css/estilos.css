@@ -1,0 +1,18 @@
+/* Primera parte: Se aplica a los id . */
+#lectura{
+    color:red;
+}
+
+#parrafo{
+    color:blue;
+}
+
+#texto{
+    color:green;
+}
+
+/* Segunda parte: Para definir una clase se hace con un . */
+.subtitulo{
+    color:blue;
+    font-size: 50px;
+}

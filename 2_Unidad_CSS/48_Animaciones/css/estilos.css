@@ -1,0 +1,35 @@
+/* Primero añadir lo que se concoe como keyframes */
+@keyframes entrar-salir{
+    /* from{ background-color: blue;}
+    to{background: green;} */
+
+    0%{background-color: blue;}
+    25%{
+        background-color: red;
+        transform: translateX(200px);
+      }
+    50%{
+        background-color: yellow;
+        transform: translateX(300px);
+      }
+    75%{
+        background-color: green;
+        transform: translateX(200px);
+      }
+    100%{
+        background-color: blue;
+        transform: translateX(100px);}
+}
+
+.cuadro{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 50px;
+
+    /* Transicion */
+    animation-name: entrar-salir;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: 3;
+}

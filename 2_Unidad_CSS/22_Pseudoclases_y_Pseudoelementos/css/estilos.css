@@ -1,0 +1,9 @@
+/*
+a:hover{
+    color:green;
+}
+*/
+
+p::first-line{
+    color: red;
+}
