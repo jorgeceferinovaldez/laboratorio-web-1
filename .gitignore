@@ -1,6 +1,9 @@
 # Ignorar archivos de configuración de Visual Studio Code
 .vscode/
 
+# Ignorar archivos de asistentes
+.omo
+
 # Archivos del sistema de macOS
 .DS_Store
 .AppleDouble
