@@ -11,7 +11,7 @@
 
 ## Bienvenida al Curso
 
-¡Bienvenidos y bienvenidas al **Laboratorio Web 1**!
+¡Bienvenidos al **Laboratorio Web 1**!
 
 En esta asignatura, exploraremos los fundamentos del desarrollo web front-end desde sus cimientos. El objetivo principal es que adquieran una base sólida y robusta, dominando las tecnologías nativas que sostienen la web moderna.
 
@@ -63,7 +63,6 @@ Si eres principiante, seguir estos pasos te permitirá ver y modificar el códig
 
 > **Actualización Técnica Reciente:** Este repositorio fue recientemente refactorizado para utilizar únicamente **CSS moderno puro (Vanilla CSS3)**. Se eliminó la dependencia de herramientas de preprocesamiento como **LESS** y compiladores como **Prepros**, simplificando el flujo de trabajo y garantizando que el código sea 100% compatible con cualquier navegador moderno sin necesidad de configuraciones previas.
 >
-> Si deseas conocer en profundidad los detalles técnicos, la justificación de la migración y los cambios implementados, puedes consultar el archivo [`INFORME.md`](./INFORME.md).
 
 ---
 
