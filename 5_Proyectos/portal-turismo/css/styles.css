@@ -73,9 +73,9 @@
   --color-estepa: #c4a45a;          /* Dorado/Ocre de la estepa (aventura y turismo rural) */
 
   /* ── Colores de Superficie y Texto ── */
-  --color-fondo: #faf9f6;           /* Blanco cálido (off-white) para descansar la vista */
+  --color-fondo: #faf9f6;           /* Blanco--color-lago cálido (off-white) para descansar la vista */
   --color-superficie: #ffffff;      /* Blanco puro para cajas y tarjetas */
-  --color-texto: #2b2b2b;           /* Gris piedra muy oscuro (mejor contraste que negro puro) */
+  --color-texto: #2b2b2b;            /* Gris piedra muy oscuro (mejor contraste que negro puro) */
   --color-texto-secundario: #6b6b6b;/* Gris medio para textos secundarios o aclaraciones */
   --color-borde: #e0ddd5;           /* Gris suave para líneas divisorias */
   --color-nieve: #f5f7fa;           /* Blanco hielo para fondos de secciones alternadas */
@@ -132,8 +132,7 @@
     --color-texto: #e8e6e1;
     --color-texto-secundario: #a8a6a1;
     --color-borde: #333333;
-    /* --color-nieve: #181818; */
-    --color-nieve: #f5f7fa;
+    --color-nieve: #181818;
     --color-cielo: #2c3e50;
     --sombra-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
     --sombra-md: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -467,7 +466,6 @@ img {
 }
 
 .nav-enlace {
-  display: block; /* ⬅️ ESTA ES LA LÍNEA CLAVE */
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--color-texto);
@@ -477,16 +475,16 @@ img {
 
 .nav-enlace:hover {
   color: var(--color-glaciar);
-  background-color: var(--color-nieve); 
+  background-color: var(--color-nieve);
 }
 
 /* ── Página activa en la navegación ──
    border-left: 4px crea una "barra" vertical a la izquierda
    del enlace activo. En desktop (media query), esto cambia
-   a border-bottom para un estilo más horizontal.  */
+   a border-bottom para un estilo más horizontal. */
 .nav-enlace.activo {
   color: var(--color-glaciar);
-  background-color: var(--color-nieve); 
+  background-color: var(--color-nieve);
   border-left: 4px solid var(--color-glaciar);
 }
 
@@ -553,6 +551,7 @@ img {
 }
 
 .hero-titulo {
+  color: var(--color-glaciar);
   font-family: var(--font-titulo);
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 700;
@@ -562,6 +561,7 @@ img {
 }
 
 .hero-subtitulo {
+  color: var(--color-atardecer);
   font-size: clamp(0.95rem, 2.5vw, 1.2rem);
   font-weight: 300;
   margin-bottom: 32px;
@@ -1577,7 +1577,7 @@ img {
 }
 
 .mapa-placeholder p {
-  font-size: 0.85rem;
+  font-size: 0.85rem;h
   color: var(--color-texto-secundario);
 }
 
