@@ -31,16 +31,17 @@ Este repositorio está organizado en directorios que representan la progresión 
 | **`1_Unidad_HTML/`** | Material teórico y ejemplos prácticos dedicados al lenguaje de marcado. Desde la estructura base del documento (`meta`, `base`) hasta etiquetas semánticas, formularios, multimedia e integración de SVG. |
 | **`2_Unidad_CSS/`** | Ejemplos y lecciones sobre Hojas de Estilo en Cascada. Incluye selectores, modelo de caja, posicionamiento, Flexbox, diseño responsivo con Media Queries, transformaciones, transiciones y animaciones. |
 | **`3_Unidad_Javascript/`** | Ejercicios y teoría sobre el lenguaje de programación de la web. Cubre desde variables y estructuras de control hasta la Programación Orientada a Objetos (POO), manipulación del DOM y manejo de eventos. |
-| **`4_Guia_Coffe_and_Cake/`** | Tutorial paso a paso para construir un sitio web completo de una sola página (Single Page Application). Las lecciones van de la 89 a la 126, abordando maquetado HTML, estilos CSS, diseño responsivo y efectos interactivos con JavaScript (lightbox, slider, parallax, validación de formularios, etc.). |
-| **`proyectos/`** | Carpeta que contiene los **proyectos integradores finales**, donde se aplican los conocimientos de las tres unidades de manera conjunta. |
+| **`4_Guías_Proyectos/`** | Contiene las guías en formato PDF para los proyectos finales. Incluye la guía paso a paso de **Coffee and Cake** (lecciones 89 a 126) y las guías de los proyectos **Calculadora**, **Gestor de Tareas** y **Portal de Turismo**. |
+| **`5_Proyectos/`** | Carpeta que contiene los **proyectos integradores finales**, donde se aplican los conocimientos de las tres unidades de manera conjunta. |
 
 ### Proyectos Finales Incluidos
 
-Dentro del directorio `proyectos/` encontrarás:
+Dentro del directorio `5_Proyectos/` encontrarás:
 
 *   **`coffe_and_cheesecake/`**: El proyecto final guiado, correspondiente a la cafetería del tutorial, integrando todos los efectos y secciones aprendidas.
 *   **`calculadora-simple/`**: Una aplicación funcional de calculadora para practicar lógica de JavaScript y manipulación del DOM.
 *   **`gestor-tareas/`**: Una aplicación de gestión de tareas (To-Do List) para consolidar conocimientos de HTML, CSS y JS en un producto útil.
+*   **`portal-turismo/`**: Un sitio web de portal de turismo para practicar la integración completa de HTML, CSS y JavaScript en un proyecto con múltiples secciones y funcionalidades.
 
 ## Instrucciones de Uso
 
@@ -67,4 +68,3 @@ Si eres principiante, seguir estos pasos te permitirá ver y modificar el códig
 ---
 
 ¡Muchos éxitos en este recorrido por el desarrollo web!
-

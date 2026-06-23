@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubrí Santa Cruz — Portal de Turismo Provincial. Explorá glaciares, montañas, cultura y gastronomía de la Patagonia Argentina.">
+  <!--
+    💡 ETIQUETAS META — Explicación para estudiantes:
+
+    <meta charset="UTF-8">
+      Define la codificación de caracteres. UTF-8 permite usar tildes,
+      ñ, emojis y cualquier carácter especial. SIN ESTO, los textos
+      en español se verían mal (Ã±, acentos rotos, etc.).
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      Indica al navegador que el ancho de la página debe ser igual al
+      ancho del dispositivo (no al de una pantalla de escritorio).
+      SIN ESTO, un celular mostraría la página "achicada" como si
+      fuera una ventana de desktop, obligando al usuario a hacer zoom.
+      Es OBLIGATORIO para diseño responsivo / mobile-first.
+
+    <meta name="description" content="...">
+      El texto que aparece debajo del título en los resultados de
+      Google. También lo usan las redes sociales al compartir el
+      enlace. Debe ser descriptivo y contener palabras clave.
+  -->
+
+  <!-- ============================================
+       PORTAL DE TURISMO PROVINCIAL (SIMPLIFICADO)
+       "Descubrí Santa Cruz"
+       Versión: index.html (Página Única Simplificada)
+
+       Este archivo consolida TODAS las secciones del
+       proyecto original en una sola página HTML:
+
+       1. Header con navegación (hamburguesa en mobile)
+       2. Hero (banner principal con CTA)
+       3. ¿Por qué Santa Cruz? (tarjetas de razones)
+       4. Destinos (con filtros por categoría y buscador)
+       5. Testimonios de viajeros
+       6. Newsletter (suscripción por email)
+       7. Contacto (formulario + datos de oficina)
+       8. Footer (enlaces, contacto, redes, copyright)
+
+       Incluye atributos ARIA para accesibilidad y
+       comentarios detallados explicando cada sección.
+  ============================================ -->
+
+  <title>Descubrí Santa Cruz — Portal de Turismo Provincial</title>
+
+  <!--
+    💡 GOOGLE FONTS — Carga de tipografías externas
+
+    <link rel="preconnect" href="...">
+      "Pre-conecta" con el servidor de Google Fonts ANTES de que el
+      navegador lo necesite. Ahorra tiempo de conexión DNS + TCP.
+      crossorigin es necesario porque el servidor de fuentes es un
+      origen diferente al nuestro.
+
+    <link href="...fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet">
+      Descarga la hoja de estilos de Google Fonts que define las
+      familias tipográficas. Usamos:
+      - Playfair Display (serif elegante) → para títulos
+      - Source Sans 3 (sans-serif moderna) → para cuerpo de texto
+      ?display=swap: muestra primero el texto con una fuente del
+      sistema y "cambia" a la fuente descargada cuando esté lista.
+      Esto evita que el texto sea invisible mientras carga la fuente.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!--
+    💡 HOJA DE ESTILOS (CSS)
+
+    <link rel="stylesheet" href="css/styles.css">
+      Vincula el archivo CSS externo. El navegador descarga y aplica
+      estos estilos al HTML. La ruta es RELATIVA a la ubicación del
+      archivo HTML actual (index.html está en la raíz, styles.css
+      está dentro de la carpeta css/).
+
+    ⚠️ ORDEN DE CARGA: Los estilos se aplican en cascada. Si hubiera
+    MÚLTIPLES hojas de estilo, la última declarada tiene prioridad
+    sobre la primera (a igual especificidad).
+  -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ====================================================
+       1. HEADER Y NAVEGACIÓN
+       ====================================================
+       El header contiene el logo/nombre del sitio y el menú
+       de navegación principal. En pantallas chicas, el menú
+       se oculta y aparece un botón "hamburguesa" para
+       mostrarlo/ocultarlo.
+
+       💡 ETIQUETAS SEMÁNTICAS:
+       - <header>: representa la cabecera del documento o de
+         una sección. Generalmente contiene logo, navegación,
+         y elementos introductorios.
+       - <nav>: define un bloque de navegación principal.
+         Debe usarse para la navegación PRINCIPAL del sitio,
+         no para cualquier conjunto de enlaces.
+
+       💡 ATRIBUTOS DE ACCESIBILIDAD (ARIA):
+       - aria-label en el logo: los lectores de pantalla leen
+         "Ir a la página de inicio" en lugar del texto genérico.
+       - aria-expanded en el botón hamburguesa: indica si el
+         menú está abierto (true) o cerrado (false). Esencial
+         para que usuarios de lectores de pantalla sepan el
+         estado del menú.
+       - aria-current="page" en el enlace activo: le dice al
+         lector de pantalla "esta es la página actual".
+       - aria-label en el nav: identifica la navegación como
+         "Navegación principal" (útil si hay varios <nav>).
+
+       💡 POSITION: STICKY
+       El header usa position: sticky (definido en CSS) para
+       que "se pegue" en la parte superior al hacer scroll.
+       top: 0 indica desde dónde debe "pegarse".
+       z-index: 100 asegura que el header quede por encima
+       del resto del contenido al superponerse.
+  -->
+  <header class="header" id="header-principal">
+    <div class="contenedor header-contenido">
+
+      <!--
+        💡 LOGO DEL SITIO
+
+        <a href="index.html" class="logo">
+          El logo es un ENLACE que vuelve a la página de inicio.
+          Esto es una convención de usabilidad web: el logo
+          SIEMPRE debe llevar al inicio.
+
+          aria-label="Ir a la página de inicio":
+          Los lectores de pantalla leerían "enlace, logo, montaña,
+          Descubrí Santa Cruz". Con aria-label, leen directamente
+          "enlace, Ir a la página de inicio", que es más claro.
+
+          <span class="logo-icono">🏔️</span>:
+          El emoji es decorativo (no aporta información textual).
+          Por eso NO lleva aria-label ni texto alternativo.
+      -->
+      <a href="index.html" class="logo" aria-label="Ir a la página de inicio">
+        <span class="logo-icono">🏔️</span>
+        <span class="logo-texto">Descubrí <strong>Santa Cruz</strong></span>
+      </a>
+
+      <!--
+        💡 BOTÓN HAMBURGUESA (Menú móvil)
+
+        type="button":
+          Especifica que este botón NO envía un formulario.
+          Sin type="button", algunos navegadores asumen
+          type="submit" y recargan la página al hacer clic.
+
+        aria-expanded="false":
+          Indica que el menú está cerrado inicialmente.
+          JavaScript cambiará esto a "true" cuando se abra.
+
+        Las 3 líneas <span class="hamburguesa-linea"> son
+        las "rayitas" del ícono hamburguesa. Se estilizan
+        en CSS como rectángulos delgados apilados verticalmente.
+        Con CSS se puede animar para que se conviertan en
+        una "X" al abrir el menú.
+      -->
+      <button
+        type="button"
+        class="menu-hamburguesa"
+        id="btn-menu"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
+        <span class="hamburguesa-linea"></span>
+        <span class="hamburguesa-linea"></span>
+        <span class="hamburguesa-linea"></span>
+      </button>
+
+      <!--
+        💡 MENÚ DE NAVEGACIÓN PRINCIPAL
+
+        <nav> con aria-label="Navegación principal":
+          Identifica este bloque como la navegación principal
+          del sitio. Si hubiera otros <nav> (ej: en el footer),
+          se distinguirían por su aria-label.
+
+        <ul> (lista no ordenada):
+          Los menús de navegación se construyen con listas
+          <ul> por razones semánticas: un menú es una lista
+          de enlaces. Los lectores de pantalla anuncian
+          "lista de 4 elementos" al entrar.
+
+        aria-current="page" en "Inicio":
+          Indica que esta es la página actual. Los lectores
+          de pantalla anuncian "página actual" al navegar
+          sobre este enlace.
+
+        href="#destinos", href="#contacto", href="#testimonios":
+          Son enlaces INTERNOS (anclas). El # seguido del id
+          de una sección hace scroll hasta esa sección.
+          Ej: href="#destinos" lleva a <section id="destinos">.
+      -->
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegación principal">
+        <ul class="nav-lista">
+          <li><a href="index.html" class="nav-enlace activo" aria-current="page">Inicio</a></li>
+          <li><a href="#destinos" class="nav-enlace">Destinos</a></li>
+          <li><a href="#contacto" class="nav-enlace">Contacto</a></li>
+          <li><a href="#testimonios" class="nav-enlace">Testimonios</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ====================================================
+       2. HERO (BANNER PRINCIPAL)
+       ====================================================
+       Es lo primero que ve el visitante. Ocupa gran parte
+       de la pantalla y tiene:
+       - Una imagen de fondo (vía CSS)
+       - Un título llamativo (h1)
+       - Un subtítulo breve
+       - Un botón CTA (Call To Action)
+
+       💡 El "Hero" es un patrón de diseño web común en
+       landing pages. Busca captar la atención del usuario
+       de inmediato con una imagen impactante y un mensaje
+       claro que invite a explorar.
+
+       💡 ETIQUETAS SEMÁNTICAS:
+       - <section>: representa una sección genérica del
+         documento. Se usa para agrupar contenido temático.
+         Cada sección debería tener un encabezado (h1-h6).
+       - <h1>: es el encabezado MÁS IMPORTANTE de la página.
+         Solo debe haber UN <h1> por página. Representa el
+         título principal del documento.
+       - Los <h2> son subtítulos de segundo nivel. Puede
+         haber varios. La jerarquía de encabezados debe ser
+         secuencial (h1 → h2 → h3) sin saltos.
+
+       💡 PATRÓN HERO:
+       El hero-overlay es un div con position: absolute que
+       cubre toda la sección. Su gradiente oscuro (CSS)
+       asegura que el texto blanco sea legible sobre la
+       imagen de fondo, independientemente de los colores
+       de la foto.
+
+       💡 CTA (Call To Action):
+       El botón "Explorar Destinos" es un enlace <a> con
+       clase .btn-primario. Es un enlace, no un <button>,
+       porque navega a otra sección (#destinos). Los botones
+       <button> se usan para acciones (enviar formulario,
+       abrir menú), mientras que <a> se usa para navegación.
+  -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay">
+      <div class="contenedor hero-contenido">
+        <h1 class="hero-titulo">Descubrí Santa Cruz</h1>
+        <p class="hero-subtitulo">
+          Glaciares imponentes, montañas legendarias y paisajes que quitan el aliento.
+          Tu próxima aventura patagónica empieza acá.
+        </p>
+        <a href="#destinos" class="btn btn-primario hero-cta">Explorar Destinos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       CONTENIDO PRINCIPAL
+       ====================================================
+       Usamos la etiqueta <main> para indicarle al navegador
+       (y a los lectores de pantalla) cuál es el contenido
+       principal de la página.
+
+       💡 <main> es una etiqueta semántica de HTML5 que:
+       - Representa el contenido ÚNICO de la página (lo que
+         no se repite en otras páginas como header o footer).
+       - Los lectores de pantalla tienen un atajo para
+         "saltar al contenido principal" que busca <main>.
+       - Ayuda a los motores de búsqueda a identificar el
+         contenido relevante de la página.
+
+       ⚠️ Solo puede haber UN <main> por página.
+       ⚠️ <main> NO debe ser hijo de <article>, <aside>,
+       <footer>, <header> o <nav>.
+  -->
+  <main>
+
+    <!-- ==================================================
+         3. SECCIÓN: ¿POR QUÉ SANTA CRUZ?
+         ==================================================
+         Mostramos 4 tarjetas con razones para visitar la
+         provincia. Cada tarjeta tiene un ícono (emoji),
+         un título y una descripción breve.
+
+         💡 <article> vs <section>:
+         - <section>: agrupa contenido temáticamente
+           relacionado. Cada sección tiene su propio
+           encabezado (h2).
+         - <article>: representa una unidad de contenido
+           INDEPENDIENTE que podría reutilizarse o
+           sindicarse (como una tarjeta, un post, un
+           producto). Cada tarjeta-razon es un <article>
+           porque cada razón tiene sentido por sí sola.
+
+         💡 aria-hidden="true" en los íconos:
+         Los emojis (🌿, 🧗, 🎨, 🍖) son DECORATIVOS.
+         No aportan información textual que no esté ya
+         en el título. Con aria-hidden="true", los
+         lectores de pantalla los ignoran y no leen
+         "hoja" o "escalador" al usuario.
+
+         💡 PATRÓN DE TARJETAS (Cards):
+         Las tarjetas son un patrón de diseño web muy
+         común. Consisten en: ícono/imagen + título +
+         descripción. En CSS se maquetan con Grid para
+         que se reorganicen automáticamente según el
+         tamaño de pantalla (1 columna en móvil, 2 en
+         tablet, 4 en desktop).
+    -->
+    <section class="seccion por-que" id="por-que">
+      <div class="contenedor">
+        <h2 class="seccion-titulo">¿Por qué Santa Cruz?</h2>
+        <p class="seccion-subtitulo">
+          Una provincia única en el mundo, donde la naturaleza se expresa en su forma más pura.
+        </p>
+
+        <!-- Grilla de tarjetas con razones para visitar -->
+        <div class="tarjetas-grilla">
+
+          <!-- Tarjeta 1: Naturaleza -->
+          <article class="tarjeta-razon">
+            <span class="tarjeta-razon-icono" aria-hidden="true">🌿</span>
+            <h3 class="tarjeta-razon-titulo">Naturaleza Salvaje</h3>
+            <p class="tarjeta-razon-texto">
+              Glaciares milenarios, lagos cristalinos y bosques patagónicos
+              que te conectan con lo esencial.
+            </p>
+          </article>
+
+          <!-- Tarjeta 2: Aventura -->
+          <article class="tarjeta-razon">
+            <span class="tarjeta-razon-icono" aria-hidden="true">🧗</span>
+            <h3 class="tarjeta-razon-titulo">Aventura Extrema</h3>
+            <p class="tarjeta-razon-texto">
+              Trekking, escalada en hielo, kayak y cabalgatas.
+              El Chaltén es la capital nacional del trekking.
+            </p>
+          </article>
+
+          <!-- Tarjeta 3: Cultura -->
+          <article class="tarjeta-razon">
+            <span class="tarjeta-razon-icono" aria-hidden="true">🎨</span>
+            <h3 class="tarjeta-razon-titulo">Cultura Milenaria</h3>
+            <p class="tarjeta-razon-texto">
+              La Cueva de las Manos, Patrimonio de la Humanidad,
+              guarda pinturas rupestres de más de 9.000 años.
+            </p>
+          </article>
+
+          <!-- Tarjeta 4: Gastronomía -->
+          <article class="tarjeta-razon">
+            <span class="tarjeta-razon-icono" aria-hidden="true">🍖</span>
+            <h3 class="tarjeta-razon-titulo">Gastronomía Regional</h3>
+            <p class="tarjeta-razon-texto">
+              Cordero patagónico al palo, centolla fueguina,
+              chocolates artesanales y cerveza craft de la región.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         4. SECCIÓN: DESTINOS CON FILTROS Y BUSCADOR
+         ==================================================
+         Esta sección combina:
+         a) Botones de filtro por categoría (Naturaleza,
+            Aventura, Cultura, Gastronomía)
+         b) Campo de búsqueda por nombre
+         c) Grilla de tarjetas de destinos (8 destinos)
+         d) Contador de resultados
+
+         💡 ATRIBUTOS DATA-* (data-categoria, data-nombre):
+         Los atributos personalizados data-* permiten
+         almacenar información adicional en elementos HTML.
+         JavaScript puede leerlos con element.dataset.*
+         (ej: tarjeta.dataset.categoria → "naturaleza").
+         Esto evita tener que buscar en clases o IDs.
+
+         💡 aria-pressed en botones de filtro:
+         Indica si un botón está presionado (true) o no
+         (false). Es como un interruptor. Los lectores de
+         pantalla anuncian "presionado" o "no presionado".
+
+         💡 aria-live="polite" en el contador:
+         Le dice al lector de pantalla: "Cuando el contenido
+         de este elemento cambie, anunciálo cuando estés
+         libre (sin interrumpir al usuario)". "polite" es
+         menos intrusivo que "assertive".
+
+         💡 FILTRADO SIN RECARGAR:
+         Todo el filtrado ocurre en el navegador (cliente)
+         usando JavaScript. No se necesita recargar la
+         página ni consultar un servidor. Esto se llama
+         "Single Page Application" (SPA) básica.
+    -->
+    <section class="seccion destinos" id="destinos">
+      <div class="contenedor">
+
+        <h2 class="seccion-titulo">Destinos Turísticos</h2>
+        <p class="seccion-subtitulo">
+          Explorá los rincones más increíbles de Santa Cruz.
+          Filtrá por categoría o buscá tu próximo destino.
+        </p>
+
+        <!-- Barra de filtros por categoría -->
+        <div class="filtros-categorias" id="filtros-categorias" role="group" aria-label="Filtrar por categoría">
+          <button
+            type="button"
+            class="filtro-btn activo"
+            data-filtro="todos"
+            aria-pressed="true"
+          >
+            🌎 Todos
+          </button>
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filtro="naturaleza"
+            aria-pressed="false"
+          >
+            🌿 Naturaleza
+          </button>
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filtro="aventura"
+            aria-pressed="false"
+          >
+            🧗 Aventura
+          </button>
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filtro="cultura"
+            aria-pressed="false"
+          >
+            🎨 Cultura
+          </button>
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filtro="gastronomia"
+            aria-pressed="false"
+          >
+            🍖 Gastronomía
+          </button>
+        </div>
+
+        <!--
+          💡 BUSCADOR POR NOMBRE
+
+          <label for="buscador-destino" class="visualmente-oculto">
+          El label está OCULTO VISUALMENTE pero disponible para
+          lectores de pantalla. La clase .visualmente-oculto
+          lo posiciona fuera de la pantalla sin ocultarlo del
+          DOM (display:none lo ocultaría TAMBIÉN para lectores
+          de pantalla, lo cual es incorrecto).
+
+          type="search":
+          Similar a type="text" pero el navegador puede agregar
+          un botón de "limpiar" (✕) automáticamente.
+
+          autocomplete="off":
+          Evita que el navegador sugiera valores anteriores.
+          Útil para campos de búsqueda donde no queremos
+          interferencia del autocompletado.
+        -->
+        <div class="filtros-buscador">
+          <label for="buscador-destino" class="visualmente-oculto">
+            Buscar destino por nombre
+          </label>
+          <input
+            type="search"
+            id="buscador-destino"
+            class="buscador-input"
+            placeholder="🔍 Buscar destino por nombre..."
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- Contador de resultados (se actualiza con JS) -->
+        <p class="filtros-contador" id="filtros-contador" aria-live="polite">
+          Mostrando <span id="cantidad-resultados">8</span> de 8 destinos
+        </p>
+
+        <!--
+          💡 GRILLA DE DESTINOS
+
+          <div class="destinos-grilla" id="destinos-grilla">
+          Contenedor que alberga todas las tarjetas de destino.
+          Se maqueta con CSS Grid para que las tarjetas se
+          distribuyan en columnas según el tamaño de pantalla:
+          - 1 columna en móvil (< 768px)
+          - 2 columnas en tablet (768px - 1023px)
+          - 3 columnas en desktop (≥ 1024px)
+
+          💡 ESTRUCTURA DE CADA TARJETA DE DESTINO:
+
+          <article data-categoria="..." data-nombre="...">
+            ┌─────────────────────────────────┐
+            │  .tarjeta-destino-imagen        │
+            │  ┌─────────────────────────┐   │
+            │  │  <img> (foto del lugar)  │   │
+            │  │  <span class="badge">    │   │ ← badge de categoría
+            │  └─────────────────────────┘   │
+            ├─────────────────────────────────┤
+            │  .tarjeta-destino-info          │
+            │  <h3> Nombre del destino        │
+            │  <p> Descripción breve           │
+            │  <a class="btn"> Ver más </a>   │
+            └─────────────────────────────────┘
+          </article>
+
+          💡 loading="lazy" en las imágenes:
+          Las imágenes se cargan SOLO cuando están cerca de
+          aparecer en pantalla (lazy loading). Esto acelera
+          la carga inicial de la página, especialmente en
+          móviles con conexiones lentas.
+
+          💡 alt="" en las imágenes:
+          El texto alternativo describe la imagen para
+          usuarios con discapacidad visual. Debe ser
+          descriptivo pero conciso. Si la imagen no carga,
+          el navegador muestra este texto en su lugar.
+        -->
+        <div class="destinos-grilla" id="destinos-grilla">
+
+          <!-- ========================================
+               DESTINO 1: Glaciar Perito Moreno
+               Categoría: naturaleza
+               data-nombre: "glaciar perito moreno"
+               (en minúsculas para búsqueda case-insensitive)
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="naturaleza"
+            data-nombre="glaciar perito moreno"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/glaciar-perito-moreno.jpg"
+                alt="Vista panorámica del Glaciar Perito Moreno con sus imponentes paredes de hielo azul sobre el Lago Argentino"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Naturaleza</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Glaciar Perito Moreno</h3>
+              <p class="tarjeta-destino-descripcion">
+                Uno de los pocos glaciares en el mundo que sigue avanzando.
+                Sus 5 km de frente y 60 metros de altura sobre el agua
+                lo convierten en un espectáculo natural único.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 2: Monte Fitz Roy / El Chaltén
+               Categoría: aventura
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="aventura"
+            data-nombre="monte fitz roy el chalten"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/monte-fitz-roy.jpg"
+                alt="Monte Fitz Roy al amanecer con sus picos de granito reflejándose en la Laguna de los Tres"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Aventura</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Monte Fitz Roy</h3>
+              <p class="tarjeta-destino-descripcion">
+                La cumbre más icónica de la Patagonia y capital nacional
+                del trekking. El sendero a la Laguna de los Tres es una
+                experiencia que todo aventurero debe vivir.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 3: Cueva de las Manos
+               Categoría: cultura
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="cultura"
+            data-nombre="cueva de las manos"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/cueva-de-las-manos.jpg"
+                alt="Pinturas rupestres de manos en negativo estampadas sobre la roca en la Cueva de las Manos"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Cultura</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Cueva de las Manos</h3>
+              <p class="tarjeta-destino-descripcion">
+                Patrimonio de la Humanidad por la UNESCO. Alberga pinturas
+                rupestres de más de 9.000 años, incluyendo las famosas
+                manos en negativo de los pueblos originarios.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 4: Bosque Petrificado
+               Categoría: naturaleza
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="naturaleza"
+            data-nombre="bosque petrificado"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/bosque-petrificado.jpg"
+                alt="Troncos fosilizados de árboles gigantes en el Monumento Natural Bosques Petrificados de la Patagonia"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Naturaleza</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Bosque Petrificado</h3>
+              <p class="tarjeta-destino-descripcion">
+                Troncos fosilizados de más de 150 millones de años
+                se conservan en la estepa patagónica. Un viaje al pasado
+                geológico de la Tierra a cielo abierto.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 5: Lago Argentino
+               Categoría: naturaleza
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="naturaleza"
+            data-nombre="lago argentino"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/lago-argentino.jpg"
+                alt="Vista panorámica del Lago Argentino con témpanos de hielo flotando en aguas turquesa y montañas nevadas de fondo"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Naturaleza</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Lago Argentino</h3>
+              <p class="tarjeta-destino-descripcion">
+                El lago más grande de la Patagonia argentina. Sus aguas
+                turquesa albergan témpanos de hielo y son el punto de
+                partida para navegar hacia los glaciares.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 6: Puerto Deseado
+               Categoría: aventura
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="aventura"
+            data-nombre="puerto deseado"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/puerto-deseado.jpg"
+                alt="Costa atlántica de Puerto Deseado con lobos marinos, pingüinos de Magallanes y acantilados rocosos"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Aventura</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Puerto Deseado</h3>
+              <p class="tarjeta-destino-descripcion">
+                Un paraíso de fauna marina: pingüinos de Magallanes,
+                lobos marinos, delfines de Commerson y cormoranes.
+                La ría del Deseado es un ecosistema único.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 7: Río Pinturas
+               Categoría: cultura
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="cultura"
+            data-nombre="rio pinturas"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/rio-pinturas.jpg"
+                alt="Cañón del Río Pinturas con paredes de roca sedimentaria en tonos rojos y naranjas y el río serpenteando en el fondo"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Cultura</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Río Pinturas</h3>
+              <p class="tarjeta-destino-descripcion">
+                Un cañón espectacular que alberga la Cueva de las Manos
+                en sus paredes. El río serpentea entre formaciones
+                rocosas de colores intensos en plena estepa.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+          <!-- ========================================
+               DESTINO 8: Estancias Patagónicas
+               Categoría: gastronomia
+          ======================================== -->
+          <article
+            class="tarjeta-destino"
+            data-categoria="gastronomia"
+            data-nombre="estancias patagonicas"
+          >
+            <div class="tarjeta-destino-imagen">
+              <img
+                src="img/estancias-patagonicas.jpg"
+                alt="Estancia patagónica tradicional con gaucho a caballo, rebaño de ovejas y el Fitz Roy al fondo"
+                loading="lazy"
+              >
+              <span class="tarjeta-destino-badge">Gastronomía</span>
+            </div>
+            <div class="tarjeta-destino-info">
+              <h3 class="tarjeta-destino-nombre">Estancias Patagónicas</h3>
+              <p class="tarjeta-destino-descripcion">
+                Viví la experiencia gaucha: cabalgatas, esquila de ovejas
+                y el legendario cordero patagónico al palo. Turismo rural
+                auténtico en la inmensidad de la estepa.
+              </p>
+              <a href="destino-detalle.html" class="btn btn-secundario">Ver más</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Mensaje cuando no hay resultados (oculto por defecto) -->
+        <p class="sin-resultados oculto" id="sin-resultados" role="status">
+          😕 No encontramos destinos con esa búsqueda.
+          Probá con otro término o seleccioná otra categoría.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ==================================================
+         5. SECCIÓN: TESTIMONIOS
+         ==================================================
+         Mostramos opiniones de viajeros para generar
+         confianza (esto se llama "prueba social" o social proof).
+
+         💡 ETIQUETAS SEMÁNTICAS:
+         - <blockquote>: representa una cita textual de otra
+           fuente. El navegador suele mostrarlo con sangría.
+           Es semánticamente correcto para testimonios.
+         - <cite>: representa el autor o la fuente de la cita.
+           Por defecto se muestra en cursiva. En este caso
+           usamos <cite> dentro de un <div> y le aplicamos
+           font-style: normal en CSS para que no herede la
+           cursiva del navegador.
+         - Cada testimonio es un <article> porque cada
+           opinión es una unidad de contenido independiente.
+
+         💡 PRUEBA SOCIAL (Social Proof):
+         Es un principio de persuasión: las personas tienden
+         a confiar más en un producto/servicio cuando ven que
+         otras personas lo han disfrutado. Los testimonios
+         son una forma efectiva de prueba social en sitios web.
+    -->
+    <section class="seccion testimonios" id="testimonios">
+      <div class="contenedor">
+        <h2 class="seccion-titulo">Lo que dicen los viajeros</h2>
+        <p class="seccion-subtitulo">
+          Experiencias reales de quienes ya descubrieron la magia de Santa Cruz.
+        </p>
+
+        <!-- Contenedor de tarjetas de testimonios -->
+        <div class="testimonios-grilla">
+
+          <!-- Testimonio 1 -->
+          <article class="tarjeta-testimonio">
+            <blockquote class="testimonio-texto">
+              "Ver el desprendimiento del Perito Moreno fue la experiencia
+              más impactante de mi vida. El sonido del hielo cayendo al agua
+              es algo que no se olvida jamás."
+            </blockquote>
+            <div class="testimonio-autor">
+              <span class="testimonio-avatar" aria-hidden="true">👩</span>
+              <div>
+                <cite class="testimonio-nombre">María González</cite>
+                <span class="testimonio-origen">Buenos Aires, Argentina</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonio 2 -->
+          <article class="tarjeta-testimonio">
+            <blockquote class="testimonio-texto">
+              "El trekking a la Laguna de los Tres fue durísimo, pero cuando
+              llegué y vi el Fitz Roy de frente... entendí por qué le dicen
+              la capital del trekking."
+            </blockquote>
+            <div class="testimonio-autor">
+              <span class="testimonio-avatar" aria-hidden="true">👨</span>
+              <div>
+                <cite class="testimonio-nombre">Lucas Fernández</cite>
+                <span class="testimonio-origen">Córdoba, Argentina</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonio 3 -->
+          <article class="tarjeta-testimonio">
+            <blockquote class="testimonio-texto">
+              "Las estancias patagónicas te transportan a otra época.
+              Comimos el mejor cordero al palo de nuestra vida
+              y los atardeceres en la estepa son mágicos."
+            </blockquote>
+            <div class="testimonio-autor">
+              <span class="testimonio-avatar" aria-hidden="true">👫</span>
+              <div>
+                <cite class="testimonio-nombre">Carolina y Pedro Ruiz</cite>
+                <span class="testimonio-origen">Rosario, Argentina</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         6. SECCIÓN: NEWSLETTER
+         ==================================================
+         Un formulario simple para que los visitantes dejen
+         su email y reciban novedades sobre turismo en
+         Santa Cruz.
+
+         💡 VALIDACIÓN NATIVA DEL NAVEGADOR:
+         - required: el navegador NO permite enviar el
+           formulario si el campo está vacío. Muestra un
+           mensaje de error automático.
+         - type="email": el navegador valida que el texto
+           ingresado tenga formato de email (contenga @ y
+           un dominio válido). Si no, muestra un error.
+         - autocomplete="email": el navegador puede sugerir
+           direcciones de email guardadas por el usuario.
+
+         💡 LABEL VISUALMENTE OCULTO:
+         El <label> está oculto visualmente pero presente
+         para lectores de pantalla. Esto es importante porque:
+         - Los usuarios videntes ven el placeholder como
+           instrucción.
+         - Los usuarios de lectores de pantalla necesitan
+           el <label> (los placeholders no siempre se leen).
+
+         💡 role="alert" + aria-live="polite":
+         Cuando JavaScript actualiza el mensaje de
+         confirmación, el lector de pantalla lo anuncia
+         automáticamente. role="alert" le da prioridad
+         para que se lea de inmediato.
+    -->
+    <section class="seccion newsletter" id="newsletter">
+      <div class="contenedor newsletter-contenido">
+        <h2 class="seccion-titulo">¿Querés recibir novedades?</h2>
+        <p class="seccion-subtitulo">
+          Suscribite a nuestro boletín y recibí las mejores recomendaciones
+          para tu viaje a Santa Cruz.
+        </p>
+
+        <form class="newsletter-form" id="form-newsletter">
+          <label for="email-newsletter" class="visualmente-oculto">
+            Tu dirección de email
+          </label>
+          <input
+            type="email"
+            id="email-newsletter"
+            class="newsletter-input"
+            placeholder="Tu email, ej: nombre@ejemplo.com"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="btn btn-primario newsletter-btn">
+            Suscribirme
+          </button>
+        </form>
+
+        <!-- Mensaje de confirmación (oculto por defecto, se muestra con JS) -->
+        <p class="newsletter-mensaje" id="newsletter-mensaje" role="alert" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         7. SECCIÓN: CONTACTO
+         ==================================================
+         Esta sección tiene dos partes en un layout de 2
+         columnas (en pantallas grandes):
+
+         IZQUIERDA: Formulario de consulta con validación
+         - Nombre (requerido)
+         - Email (requerido, validación de formato)
+         - Teléfono (opcional, con patrón)
+         - Motivo de consulta (select con opciones)
+         - Mensaje (requerido, mínimo 20 caracteres)
+         - Checkbox de suscripción al boletín
+
+         DERECHA: Información de la oficina oficial
+         - Dirección física
+         - Teléfono
+         - Email institucional
+         - Horario de atención
+         - Mapa placeholder
+
+         💡 ATRIBUTOS DE ACCESIBILIDAD EN FORMULARIOS:
+
+         aria-describedby="nombre-error":
+         Vincula el campo con su mensaje de error. Cuando
+         el campo recibe foco, el lector de pantalla lee
+         el contenido del span de error además del label.
+
+         aria-invalid="true/false":
+         Indica si el campo tiene un valor inválido.
+         JavaScript cambia esto dinámicamente. Los
+         lectores de pantalla anuncian "inválido" o
+         "válido" según el valor.
+
+         role="alert" en los spans de error:
+         Cuando JavaScript escribe el mensaje de error,
+         el lector de pantalla lo anuncia inmediatamente.
+
+         💡 novalidate en el <form>:
+         Desactiva la validación NATIVA del navegador
+         (que muestra mensajes de error en burbujas
+         difíciles de estilizar). En su lugar, usamos
+         JavaScript para una validación personalizada
+         y accesible.
+
+         💡 <address>:
+         Etiqueta semántica para información de contacto.
+         Puede contener dirección física, email, teléfono.
+         Los navegadores suelen mostrarlo en cursiva.
+    -->
+    <section class="seccion contacto" id="contacto">
+      <div class="contenedor grid-contacto">
+
+        <!-- Columna Izquierda: Formulario de consulta -->
+        <article class="contacto-formulario-caja">
+          <h2 class="contacto-seccion-titulo">Enviá tu consulta</h2>
+          <p class="contacto-seccion-subtitulo">Todos los campos marcados con (*) son obligatorios.</p>
+
+          <form class="form-contacto" id="form-contacto" novalidate>
+
+            <!-- Campo 1: Nombre completo -->
+            <div class="campo-grupo">
+              <label for="nombre" class="campo-label">Nombre completo *</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                class="campo-input"
+                placeholder="Ingresá tu nombre y apellido"
+                required
+                autocomplete="name"
+                aria-describedby="nombre-error"
+                aria-invalid="false"
+              >
+              <span id="nombre-error" class="error-mensaje" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 2: Correo electrónico -->
+            <div class="campo-grupo">
+              <label for="email" class="campo-label">Correo electrónico *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="campo-input"
+                placeholder="ejemplo@correo.com"
+                required
+                autocomplete="email"
+                aria-describedby="email-error"
+                aria-invalid="false"
+              >
+              <span id="email-error" class="error-mensaje" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 3: Teléfono (opcional) -->
+            <div class="campo-grupo">
+              <label for="telefono" class="campo-label">Teléfono (opcional)</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                class="campo-input"
+                placeholder="Ej: +54 9 2966 123456"
+                autocomplete="tel"
+                pattern="[+]?[0-9\s\-]{7,20}"
+                aria-describedby="telefono-error"
+                aria-invalid="false"
+              >
+              <span id="telefono-error" class="error-mensaje" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 4: Motivo de consulta -->
+            <div class="campo-grupo">
+              <label for="motivo" class="campo-label">Motivo de consulta *</label>
+              <select id="motivo" name="motivo" class="campo-select" required aria-describedby="motivo-error" aria-invalid="false">
+                <option value="">Seleccioná un motivo...</option>
+                <option value="info-general">Información general</option>
+                <option value="senderos">Senderos y Trekking</option>
+                <option value="alojamiento">Alojamiento y Servicios</option>
+                <option value="clima">Estado de rutas y Clima</option>
+                <option value="otro">Otro motivo</option>
+              </select>
+              <span id="motivo-error" class="error-mensaje" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 5: Mensaje -->
+            <div class="campo-grupo">
+              <label for="mensaje" class="campo-label">Mensaje *</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                class="campo-textarea"
+                rows="5"
+                placeholder="Escribí tu consulta en detalle (mínimo 20 caracteres)..."
+                required
+                minlength="20"
+                aria-describedby="mensaje-error"
+                aria-invalid="false"
+              ></textarea>
+              <span id="mensaje-error" class="error-mensaje" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 6: Checkbox boletín de novedades -->
+            <div class="campo-grupo-checkbox">
+              <input type="checkbox" id="newsletter-contacto" name="newsletter" class="campo-checkbox">
+              <label for="newsletter-contacto" class="campo-label-checkbox">
+                Deseo recibir novedades y eventos turísticos de Santa Cruz
+              </label>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="btn btn-primario form-btn">Enviar consulta</button>
+
+            <!-- Mensaje de éxito/error general -->
+            <p id="contacto-mensaje-general" class="contacto-mensaje-general" role="alert" aria-live="polite"></p>
+
+          </form>
+        </article>
+
+        <!-- Columna Derecha: Información de la oficina oficial -->
+        <article class="contacto-info-caja">
+          <h2 class="contacto-seccion-titulo">Oficina de Informes Oficial</h2>
+          <p class="contacto-seccion-subtitulo">Secretaría de Estado de Turismo de Santa Cruz.</p>
+
+          <address class="contacto-direccion-bloque">
+            <div class="contacto-item">
+              <span class="contacto-icono" aria-hidden="true">📍</span>
+              <div>
+                <strong>Dirección física:</strong>
+                <p>Av. Presidente Kirchner 863, Río Gallegos, Santa Cruz (CP 9400)</p>
+              </div>
+            </div>
+
+            <div class="contacto-item">
+              <span class="contacto-icono" aria-hidden="true">📞</span>
+              <div>
+                <strong>Teléfono de contacto:</strong>
+                <p><a href="tel:+542966422702">(02966) 42-2702</a></p>
+              </div>
+            </div>
+
+            <div class="contacto-item">
+              <span class="contacto-icono" aria-hidden="true">✉️</span>
+              <div>
+                <strong>Correo institucional:</strong>
+                <p><a href="mailto:turismo@santacruz.gob.ar">turismo@santacruz.gob.ar</a></p>
+              </div>
+            </div>
+
+            <div class="contacto-item">
+              <span class="contacto-icono" aria-hidden="true">⏰</span>
+              <div>
+                <strong>Horario de atención:</strong>
+                <p>Lunes a Viernes de 08:00 a 20:00 hs. Sábados y Domingos de 10:00 a 18:00 hs.</p>
+              </div>
+            </div>
+          </address>
+
+          <!-- Mapa placeholder (simulación visual) -->
+          <div class="mapa-placeholder">
+            <div class="mapa-contenido">
+              <span class="mapa-icono" aria-hidden="true">🗺️</span>
+              <strong>Mapa de ubicación</strong>
+              <p>Av. Pres. Kirchner 863, Río Gallegos</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================
+       8. FOOTER
+       ====================================================
+       El pie de página contiene:
+       - Descripción del portal
+       - Enlaces de navegación rápida
+       - Información de contacto (usando <address>)
+       - Íconos de redes sociales (emojis con aria-label)
+       - Créditos y copyright
+
+       💡 <address> es la etiqueta semántica de HTML5 para
+       información de contacto del autor/documento. Se usa
+       tanto en el footer como en la sección de contacto.
+
+       💡 aria-label en redes sociales:
+       Los emojis 📘, 📷, 🐦, ▶️ son decorativos pero
+       también son el único contenido del enlace. Sin
+       aria-label, un lector de pantalla leería "📘"
+       (no descriptivo). Con aria-label="Facebook", lee
+       "Facebook, enlace". El atributo title agrega un
+       tooltip visual al pasar el mouse.
+
+       💡 ESTRUCTURA DEL FOOTER:
+       El footer usa CSS Grid con 4 columnas en desktop,
+       2 en tablet y 1 en móvil. Cada columna es un
+       <div class="footer-columna">. La barra inferior
+       (copyright) está fuera del grid, con un borde
+       superior que la separa visualmente.
+  -->
+  <footer class="footer" id="footer">
+    <div class="contenedor footer-contenido">
+
+      <!-- Columna 1: Sobre el portal -->
+      <div class="footer-columna">
+        <h3 class="footer-titulo">Descubrí Santa Cruz</h3>
+        <p class="footer-descripcion">
+          Portal de turismo de la provincia de Santa Cruz, Patagonia Argentina.
+          Información oficial sobre destinos, actividades y servicios turísticos.
+        </p>
+      </div>
+
+      <!-- Columna 2: Enlaces rápidos -->
+      <div class="footer-columna">
+        <h3 class="footer-titulo">Enlaces</h3>
+        <nav aria-label="Navegación del footer">
+          <ul class="footer-enlaces">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#destinos">Destinos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="footer-columna">
+        <h3 class="footer-titulo">Contacto</h3>
+        <address class="footer-contacto">
+          <p>📍 Av. Presidente Kirchner 863, Río Gallegos</p>
+          <p>📞 (02966) 42-2702</p>
+          <p>
+            ✉️
+            <a href="mailto:turismo@santacruz.gob.ar">turismo@santacruz.gob.ar</a>
+          </p>
+        </address>
+      </div>
+
+      <!-- Columna 4: Redes sociales -->
+      <div class="footer-columna">
+        <h3 class="footer-titulo">Seguinos</h3>
+        <div class="footer-redes">
+          <a href="#" class="red-social" aria-label="Facebook" title="Facebook">📘</a>
+          <a href="#" class="red-social" aria-label="Instagram" title="Instagram">📷</a>
+          <a href="#" class="red-social" aria-label="Twitter / X" title="Twitter / X">🐦</a>
+          <a href="#" class="red-social" aria-label="YouTube" title="YouTube">▶️</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior con copyright -->
+    <div class="footer-inferior">
+      <div class="contenedor">
+        <p>
+          © 2026 Descubrí Santa Cruz — Proyecto académico para Laboratorio Web 1.
+          Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================
+       SCRIPTS
+       ====================================================
+       Cargamos los archivos JavaScript al final del body
+       para que el HTML ya esté cargado cuando se ejecuten.
+       Así evitamos errores de "elemento no encontrado"
+       al buscar elementos con getElementById().
+
+       - main.js: Lógica general (menú hamburguesa, scroll
+         suave, newsletter, etc.)
+       - filtros.js: Lógica de filtrado y búsqueda de
+         destinos por categoría y nombre
+  -->
+  <!--
+    NOTA: filtros.js no existe. La lógica de filtrado y búsqueda
+    está incluida dentro de main.js para mantener la simplicidad.
+  -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1798 @@
+/* ============================================
+   PORTAL DE TURISMO PROVINCIAL
+   "Descubrí Santa Cruz"
+   Estilo simplificado para estructura de una sola página
+   (Single-Page Application / Landing Page)
+
+   Archivo: styles.css
+   Hoja de estilos completa con diseño Mobile First,
+   CSS Grid, Flexbox, variables, diseño responsivo
+   y soporte de modo oscuro.
+
+   💡 ESTRUCTURA DEL ARCHIVO (índice de secciones):
+   1.  Variables de Diseño (CSS Custom Properties)
+   2.  Reset y Estilos Base
+   3.  Estructuras y Clases Comunes
+   4.  Header y Menú de Navegación
+   5.  Hero Banner
+   6.  Botones (CTA)
+   7.  Sección "¿Por qué Santa Cruz?"
+   8.  Grilla de Destinos
+   9.  Testimonios
+   10. Newsletter
+   11. Filtros y Buscador
+   12. Footer
+   13. Formulario de Contacto
+   14. Estilos Nosotros
+   15. Diseño Responsivo (Media Queries)
+
+   💡 CONCEPTOS CLAVE QUE SE APRENDEN AQUÍ:
+   - CSS Custom Properties (variables)
+   - Mobile First (diseñar para móvil, luego agrandar)
+   - CSS Grid (layout de tarjetas y columnas)
+   - Flexbox (alineación de elementos)
+   - Media Queries (puntos de quiebre responsivos)
+   - prefers-color-scheme (modo oscuro automático)
+   - Transiciones y animaciones CSS
+   - Clases de utilidad y accesibilidad
+============================================ */
+
+/* ====================================================
+   1. VARIABLES DE DISEÑO (CSS CUSTOM PROPERTIES)
+   ====================================================
+   💡 ¿QUÉ SON LAS VARIABLES CSS?
+   Las variables CSS (Custom Properties) permiten almacenar
+   valores reutilizables. Se definen con --nombre y se
+   usan con var(--nombre).
+
+   💡 VENTAJAS:
+   - Cambiás un valor UNA VEZ y se actualiza en TODOS lados.
+   - Hacen el código más legible (--color-glaciar es más
+     descriptivo que #2e86ab).
+   - Se pueden redefinir en media queries o contextos
+     específicos (ej: modo oscuro abajo).
+
+   💡 SCOPING:
+   :root { } es la pseudo-clase que selecciona el elemento
+   raíz (<html>). Las variables definidas aquí están
+   disponibles GLOBALMENTE en todo el documento.
+
+   💡 PALETA DE COLORES PATAGÓNICOS:
+   Los nombres de las variables reflejan elementos de
+   Santa Cruz: glaciar (azul), lago (azul profundo),
+   atardecer (naranja), estepa (dorado), nieve (blanco),
+   cielo (celeste). Esto ayuda a mantener coherencia
+   visual y a recordar qué representa cada color.
+*/
+:root {
+  /* ── Paleta de Colores Patagónicos ── */
+  --color-glaciar: #2e86ab;         /* Azul glaciar (color principal) */
+  --color-lago: #164e63;            /* Azul lago profundo (contraste y hovers) */
+  --color-atardecer: #f18f01;       /* Naranja Fitz Roy (botones primarios y acentos) */
+  --color-rosa: #a23b72;            /* Rosa magenta (badges y acentos secundarios) */
+  --color-estepa: #c4a45a;          /* Dorado/Ocre de la estepa (aventura y turismo rural) */
+
+  /* ── Colores de Superficie y Texto ── */
+  --color-fondo: #faf9f6;           /* Blanco cálido (off-white) para descansar la vista */
+  --color-superficie: #ffffff;      /* Blanco puro para cajas y tarjetas */
+  --color-texto: #2b2b2b;           /* Gris piedra muy oscuro (mejor contraste que negro puro) */
+  --color-texto-secundario: #6b6b6b;/* Gris medio para textos secundarios o aclaraciones */
+  --color-borde: #e0ddd5;           /* Gris suave para líneas divisorias */
+  --color-nieve: #f5f7fa;           /* Blanco hielo para fondos de secciones alternadas */
+  --color-cielo: #d6e8f0;           /* Celeste cielo patagónico para contrastes suaves */
+
+  /* ── Tipografía (Fuentes de Google) ── */
+  --font-titulo: 'Playfair Display', Georgia, serif;
+  --font-cuerpo: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+
+  /* ── Radios de Esquinas (Border Radius) ── */
+  --radio-sm: 4px;
+  --radio-md: 8px;
+  --radio-lg: 16px;
+  --radio-full: 9999px;             /* Ideal para botones redondos y píldoras */
+
+  /* ── Sombras (Depth / Shadows) ── */
+  --sombra-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --sombra-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-lg: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+  /* ── Transiciones (Animaciones de Hover) ── */
+  --transicion-rapida: 150ms ease;
+  --transicion-base: 300ms ease;
+  --transicion-lenta: 500ms ease;
+}
+
+/* ── Modo Oscuro Automático (prefers-color-scheme) ──
+   💡 ¿CÓMO FUNCIONA?
+   prefers-color-scheme es una media query que detecta si
+   el sistema operativo del usuario está configurado en
+   modo oscuro (dark) o claro (light).
+
+   💡 VENTAJA DE USAR VARIABLES:
+   En lugar de reescribir CADA regla CSS para modo oscuro,
+   simplemente REDEFINIMOS las variables de color. Como
+   todos los estilos usan var(--color-*), el cambio se
+   aplica automáticamente en TODA la hoja de estilos.
+
+   💡 CÓMO PROBARLO:
+   En Windows: Configuración → Personalización → Colores → Modo oscuro
+   En macOS: Preferencias del Sistema → General → Apariencia → Oscuro
+   En Chrome DevTools: Ctrl+Shift+P → "Rendering" → Emulate CSS media feature prefers-color-scheme
+
+   💡 AJUSTE DE IMÁGENES:
+   En modo oscuro, las imágenes pueden verse demasiado
+   brillantes. filter: brightness(0.9) contrast(1.1) las
+   oscurece ligeramente y aumenta el contraste para que
+   se integren mejor con el fondo oscuro.
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fondo: #121212;
+    --color-superficie: #1e1e1e;
+    --color-texto: #e8e6e1;
+    --color-texto-secundario: #a8a6a1;
+    --color-borde: #333333;
+    /* --color-nieve: #181818; */
+    --color-nieve: #f5f7fa;
+    --color-cielo: #2c3e50;
+    --sombra-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --sombra-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --sombra-lg: 0 12px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Ajuste de contraste para imágenes en modo oscuro */
+  img {
+    filter: brightness(0.9) contrast(1.1);
+  }
+}
+
+
+/* ====================================================
+   2. RESET Y ESTILOS BASE
+   ====================================================
+   💡 ¿QUÉ ES UN RESET CSS?
+   Cada navegador tiene estilos por defecto diferentes
+   (márgenes, paddings, tamaños de fuente). Un "reset"
+   elimina esas diferencias para que nuestro diseño se
+   vea igual en Chrome, Firefox, Safari, etc.
+
+   💡 box-sizing: border-box:
+   Por defecto, el width de un elemento NO incluye el
+   padding ni el borde. Con border-box, el width SÍ
+   incluye padding y borde. Esto hace que los cálculos
+   de tamaño sean mucho más intuitivos.
+   Ej: un div con width:100%, padding:20px y border:1px
+   → Sin border-box: el div mide 100% + 40px + 2px
+   → Con border-box: el div mide exactamente 100%
+
+   💡 * selector universal:
+   El asterisco selecciona TODOS los elementos HTML.
+   *::before y *::after seleccionan los pseudo-elementos
+   de todos los elementos. Así nos aseguramos de que
+   box-sizing se aplique en absolutamente todo.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Scroll suave al navegar por anclas */
+}
+
+body {
+  font-family: var(--font-cuerpo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Apila el contenido y empuja el footer abajo */
+  overflow-x: hidden;     /* Evita scroll horizontal accidental */
+}
+
+/* Elementos interactivos básicos */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transicion-rapida);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ====================================================
+   3. ESTRUCTURAS Y CLASES COMUNES
+   ====================================================
+   Clases reutilizables para layout, secciones y
+   utilidades de accesibilidad.
+*/
+
+/* ── Contenedor Central ──
+   💡 PATRÓN DE DISEÑO: contenedor de ancho fijo centrado.
+   width: 90% da un margen lateral del 5% en pantallas chicas.
+   max-width: 1200px evita que el contenido se estire demasiado
+   en monitores grandes (más de 1200px es difícil de leer).
+   margin-left: auto + margin-right: auto centra el bloque. */
+.contenedor {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Espaciado vertical de secciones ──
+   Cada sección principal tiene padding vertical para separarse
+   de las secciones vecinas. El valor cambia según la pantalla
+   (ver media queries al final). */
+.seccion {
+  padding: 40px 0;
+}
+
+/* ── Título de sección ──
+   Usa la fuente serif (Playfair Display) para darle un toque
+   elegante y distinguir los títulos del cuerpo de texto.
+   text-align: center centra el título. */
+.seccion-titulo {
+  font-family: var(--font-titulo);
+  font-size: 2rem;
+  color: var(--color-lago);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Ajuste de color de títulos en modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .seccion-titulo {
+    color: var(--color-glaciar);
+  }
+}
+
+/* ── Subtítulo de sección ──
+   Centrado, con ancho máximo de 600px para que no ocupe todo
+   el ancho en pantallas grandes (líneas muy largas son difíciles
+   de leer). margin-left/right: auto lo centra. */
+.seccion-subtitulo {
+  font-size: 1rem;
+  color: var(--color-texto-secundario);
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Clase de utilidad: oculto ──
+   display: none oculta el elemento COMPLETAMENTE (no ocupa
+   espacio en el layout). !important fuerza la regla por
+   sobre cualquier otra declaración.
+   💡 Se usa con JavaScript para mostrar/ocultar elementos
+   dinámicamente (ej: mensaje "sin resultados"). */
+.oculto {
+  display: none !important;
+}
+
+/* ── Clase de accesibilidad: visualmente-oculto ──
+   💡 DIFERENCIA CRUCIAL con display: none:
+   - display: none: el elemento NO existe para lectores de
+     pantalla. No lo leen.
+   - visualmente-oculto: el elemento está en el DOM pero
+     "empujado" fuera de la pantalla. Los lectores de
+     pantalla SÍ lo leen.
+
+   💡 CÓMO FUNCIONA:
+   - position: absolute lo saca del flujo normal.
+   - width/height: 1px lo hace casi invisible.
+   - clip: rect(0,0,0,0) es el método estándar para
+     "cortar" el elemento visualmente.
+   - overflow: hidden evita que el contenido se desborde.
+
+   💡 CUÁNDO USARLO:
+   - Labels de formularios que tienen placeholder visible.
+   - Texto descriptivo para íconos decorativos.
+   - Instrucciones solo para lectores de pantalla. */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
+/* ====================================================
+   4. HEADER Y MENÚ DE NAVEGACIÓN (MOBILE FIRST)
+   ====================================================
+   💡 ESTRATEGIA MOBILE FIRST:
+   Primero diseñamos para pantallas chicas (móvil).
+   Luego, con media queries, adaptamos para pantallas
+   más grandes. Esto es más eficiente que diseñar para
+   desktop y luego "achicar" (desktop-first).
+
+   💡 POSITION: STICKY:
+   position: sticky + top: 0 hace que el header "se
+   pegue" en la parte superior al hacer scroll. Es
+   como una combinación de relative (sigue el flujo)
+   y fixed (se fija al hacer scroll).
+
+   💡 Z-INDEX:
+   z-index: 100 asegura que el header esté SIEMPRE
+   por encima del contenido al superponerse.
+   z-index: 200 en el botón hamburguesa lo pone
+   por encima del menú desplegable.
+   z-index: 150 en el menú lo pone sobre el contenido
+   pero debajo del botón hamburguesa.
+*/
+
+.header {
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transicion-base), box-shadow var(--transicion-base);
+}
+
+.header-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+/* ── Logo del sitio ──
+   Flexbox con gap para separar el ícono del texto.
+   font-family usa la variable --font-titulo (serif). */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-titulo);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-lago);
+}
+
+.logo strong {
+  color: var(--color-glaciar);
+  font-weight: 700;
+}
+
+.logo-icono {
+  font-size: 1.5rem;
+}
+
+/* ── Botón hamburguesa (solo visible en mobile) ──
+   💡 ¿CÓMO SE CREA EL ÍCONO HAMBURGUESA?
+   El botón contiene 3 <span> vacíos. Cada span es una
+   línea horizontal (height: 2px, width: 100%). El botón
+   usa flex-direction: column + justify-content: space-between
+   para distribuir las 3 líneas uniformemente.
+
+   💡 ANIMACIÓN A "X":
+   Con JavaScript, al abrir el menú se agrega la clase
+   .activo al botón. En CSS se podría animar:
+   - Línea 1: rotar 45deg y moverse hacia abajo
+   - Línea 2: opacity: 0 (desaparece)
+   - Línea 3: rotar -45deg y moverse hacia arriba
+   (No implementado en esta versión, pero es un ejercicio
+   común para estudiantes). */
+.menu-hamburguesa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+}
+
+.hamburguesa-linea {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-lago);
+  border-radius: var(--radio-sm);
+  transition: transform var(--transicion-rapida), opacity var(--transicion-rapida), background-color var(--transicion-rapida);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hamburguesa-linea {
+    background-color: var(--color-glaciar);
+  }
+}
+
+/* ── Menú de navegación: oculto por defecto en mobile ──
+   💡 display: none:
+   En móvil, el menú está oculto. Solo se muestra cuando
+   JavaScript agrega la clase .visible.
+
+   💡 position: absolute + top: 100%:
+   El menú se posiciona justo debajo del header (100% de
+   la altura del header). left: 0 + width: 100% lo hace
+   ocupar todo el ancho de la pantalla.
+
+   💡 ANIMACIÓN @keyframes:
+   Cuando se muestra, la animación "deslizarAbajo" lo
+   hace aparecer con un desplazamiento vertical suave
+   (translateY) y un fade-in (opacity). */
+.nav-principal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-superficie);
+  border-bottom: 3px solid var(--color-glaciar);
+  box-shadow: var(--sombra-md);
+  display: none; /* Oculto por defecto en móvil */
+  z-index: 150;
+}
+
+/* Cuando JS inyecta .visible, se muestra con animación */
+.nav-principal.visible {
+  display: block;
+  animation: deslizarAbajo 300ms ease-out;
+}
+
+@keyframes deslizarAbajo {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-lista {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  gap: 8px;
+  text-align: center;
+}
+
+.nav-enlace {
+  display: block; /* ⬅️ ESTA ES LA LÍNEA CLAVE */
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  padding: 10px 20px;
+  transition: color var(--transicion-rapida), background-color var(--transicion-rapida);
+}
+
+.nav-enlace:hover {
+  color: var(--color-glaciar);
+  background-color: var(--color-nieve); 
+}
+
+/* ── Página activa en la navegación ──
+   border-left: 4px crea una "barra" vertical a la izquierda
+   del enlace activo. En desktop (media query), esto cambia
+   a border-bottom para un estilo más horizontal.  */
+.nav-enlace.activo {
+  color: var(--color-glaciar);
+  background-color: var(--color-nieve); 
+  border-left: 4px solid var(--color-glaciar);
+}
+
+
+/* ====================================================
+   5. HERO BANNER (BANNER PRINCIPAL)
+   ====================================================
+   💡 PATRÓN HERO:
+   El Hero es una sección de bienvenida que ocupa gran
+   parte de la pantalla (70vh = 70% del viewport height).
+   Tiene una imagen de fondo, un overlay oscuro para
+   legibilidad, y texto centrado.
+
+   💡 BACKGROUND-SIZE: COVER:
+   La imagen de fondo se escala para CUBRIR todo el
+   contenedor, recortando los bordes si es necesario.
+   background-position: center centra la imagen.
+
+   💡 MIN-HEIGHT: 70VH:
+   vh = viewport height (altura de la ventana).
+   70vh = 70% de la altura de la pantalla.
+   En un monitor de 1080px de alto, el hero mide 756px.
+   En un celular de 800px, mide 560px.
+
+   💡 CLAMP() PARA TAMAÑOS DE FUENTE FLUIDOS:
+   font-size: clamp(2rem, 6vw, 3.5rem) significa:
+   - Mínimo: 2rem (nunca más chico que esto)
+   - Preferido: 6vw (6% del ancho de la ventana)
+   - Máximo: 3.5rem (nunca más grande que esto)
+   Esto hace que el texto se ESCALE automáticamente
+   según el tamaño de pantalla, sin media queries.
+*/
+
+.hero {
+  position: relative;
+  background-image: url('../img/hero-santa-cruz.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Gradiente oscuro para legibilidad del texto blanco */
+  background: linear-gradient(to bottom, rgba(27, 27, 47, 0.3) 0%, rgba(27, 27, 47, 0.75) 100%);
+  display: flex;
+  align-items: center;
+}
+
+.hero-contenido {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10;
+  padding: 24px;
+  color: var(--color-nieve);
+}
+
+.hero-titulo {
+  font-family: var(--font-titulo);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtitulo {
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  margin-bottom: 32px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Banner superior para secciones internas (destinos, contacto, nosotros) */
+.pagina-titulo {
+  background-color: var(--color-lago);
+  color: var(--color-nieve);
+  padding: 48px 0;
+  text-align: center;
+  border-bottom: 4px solid var(--color-glaciar);
+}
+
+.pagina-titulo-texto {
+  font-family: var(--font-titulo);
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.pagina-titulo-subtitulo {
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-cielo);
+}
+
+
+/* ====================================================
+   6. BOTONES (CALL TO ACTION)
+   ====================================================
+   💡 PATRÓN DE BOTONES:
+   Todos los botones comparten la clase base .btn que
+   define el estilo común (padding, border-radius, etc.).
+   Luego, .btn-primario y .btn-secundario agregan colores
+   específicos. Esto evita repetir código.
+
+   💡 BORDER-RADIUS: 9999PX (PÍLDORA):
+   Un valor muy grande de border-radius crea bordes
+   completamente redondeados (forma de píldora).
+   Funciona porque el radio máximo es la mitad del
+   lado más corto, y 9999px siempre supera eso.
+
+   💡 TRANSFORM: TRANSLATEY(-2PX) EN HOVER:
+   El botón "se levanta" 2px al pasar el mouse. Esto
+   crea una sensación de profundidad y respuesta táctil.
+   Combinado con box-shadow más grande, simula que el
+   botón se acerca al usuario.
+
+   💡 TRANSITION:
+   Las transiciones suavizan los cambios de estado
+   (hover → normal). Sin transition, el cambio sería
+   instantáneo y brusco.
+*/
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: var(--radio-full);
+  cursor: pointer;
+  transition: background-color var(--transicion-rapida), transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+  font-family: inherit;
+}
+
+.btn-primario {
+  background-color: var(--color-atardecer);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(241, 143, 1, 0.3);
+}
+
+.btn-primario:hover {
+  background-color: #d88001;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(241, 143, 1, 0.4);
+}
+
+.btn-primario:active {
+  transform: translateY(0);
+}
+
+.btn-secundario {
+  background-color: var(--color-glaciar);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(46, 134, 171, 0.2);
+}
+
+.btn-secundario:hover {
+  background-color: var(--color-lago);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(46, 134, 171, 0.3);
+}
+
+.btn-secundario:active {
+  transform: translateY(0);
+}
+
+
+/* ====================================================
+   7. SECCIÓN "¿POR QUÉ SANTA CRUZ?" (TARJETAS)
+   ====================================================
+   💡 CSS GRID:
+   display: grid convierte el contenedor en una grilla.
+   grid-template-columns: 1fr crea UNA columna que ocupa
+   todo el ancho disponible (en móvil).
+   gap: 24px separa las tarjetas entre sí.
+
+   💡 BORDER-TOP: 4PX SOLID:
+   Cada tarjeta tiene una "barra" de color en el borde
+   superior. Esto crea un acento visual que guía la
+   mirada y diferencia las tarjetas del fondo.
+
+   💡 TRANSFORM: TRANSLATEY(-5PX) EN HOVER:
+   La tarjeta "se eleva" 5px al pasar el mouse.
+   Combinado con box-shadow más grande, simula que
+   la tarjeta se acerca al usuario (efecto de
+   profundidad / elevación).
+*/
+
+.por-que {
+  background-color: var(--color-superficie);
+}
+
+.tarjetas-grilla {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 24px;
+}
+
+.tarjeta-razon {
+  background-color: var(--color-nieve);
+  padding: 24px;
+  border-radius: var(--radio-lg);
+  text-align: center;
+  box-shadow: var(--sombra-sm);
+  transition: transform var(--transicion-base), box-shadow var(--transicion-base);
+  border-top: 4px solid var(--color-glaciar);
+}
+
+.tarjeta-razon:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-md);
+}
+
+.tarjeta-razon-icono {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.tarjeta-razon-titulo {
+  font-family: var(--font-titulo);
+  font-size: 1.25rem;
+  color: var(--color-lago);
+  margin-bottom: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tarjeta-razon-titulo {
+    color: var(--color-glaciar);
+  }
+}
+
+.tarjeta-razon-texto {
+  font-size: 0.95rem;
+  color: var(--color-texto-secundario);
+}
+
+
+/* ====================================================
+   8. GRILLA DE DESTINOS Y TARJETAS DE CATÁLOGO
+   ====================================================
+   💡 ESTRUCTURA DE TARJETA DE DESTINO:
+   Cada tarjeta es un <article> con display: flex,
+   flex-direction: column. Esto permite que el botón
+   "Ver más" se alinee SIEMPRE al fondo, sin importar
+   la longitud del texto de descripción.
+
+   💡 OVERFLOW: HIDDEN:
+   En .tarjeta-destino-imagen, overflow: hidden oculta
+   las partes de la imagen que se salen del contenedor.
+   Esto es necesario para el efecto zoom en hover.
+
+   💡 OBJECT-FIT: COVER:
+   En la imagen, object-fit: cover hace que la imagen
+   cubra todo el contenedor sin deformarse, recortando
+   los bordes si es necesario (similar a background-size: cover).
+
+   💡 BADGE DE CATEGORÍA:
+   position: absolute + top/left: 12px posiciona el badge
+   en la esquina superior izquierda de la imagen.
+   z-index: 10 lo pone por encima de la imagen.
+
+   💡 SELECTORES DE ATRIBUTO [data-categoria="..."]:
+   CSS puede seleccionar elementos por sus atributos.
+   .tarjeta-destino[data-categoria="naturaleza"] selecciona
+   solo las tarjetas con data-categoria="naturaleza".
+   Esto permite darle un color diferente al badge según
+   la categoría, SIN necesidad de clases adicionales.
+*/
+
+.destinos-grilla {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 32px;
+}
+
+.tarjeta-destino {
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicion-base), box-shadow var(--transicion-base);
+  border: 1px solid var(--color-borde);
+}
+
+.tarjeta-destino:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-lg);
+}
+
+.tarjeta-destino-imagen {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.tarjeta-destino-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transicion-lenta);
+}
+
+.tarjeta-destino:hover .tarjeta-destino-imagen img {
+  transform: scale(1.05); /* Efecto zoom sutil al hover */
+}
+
+/* Badge de categoría (esquina superior izquierda de la imagen) */
+.tarjeta-destino-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--color-lago);
+  color: var(--color-nieve);
+  padding: 4px 12px;
+  border-radius: var(--radio-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Colores de badges dinámicos por categoría (vía data-atributos) */
+.tarjeta-destino[data-categoria="naturaleza"] .tarjeta-destino-badge {
+  background-color: var(--color-glaciar);
+}
+
+.tarjeta-destino[data-categoria="aventura"] .tarjeta-destino-badge {
+  background-color: var(--color-estepa);
+}
+
+.tarjeta-destino[data-categoria="cultura"] .tarjeta-destino-badge {
+  background-color: var(--color-rosa);
+}
+
+.tarjeta-destino[data-categoria="gastronomia"] .tarjeta-destino-badge {
+  background-color: var(--color-atardecer);
+}
+
+.tarjeta-destino-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Estira el contenido para que el botón quede abajo */
+}
+
+.tarjeta-destino-nombre {
+  font-family: var(--font-titulo);
+  font-size: 1.35rem;
+  color: var(--color-lago);
+  margin-bottom: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tarjeta-destino-nombre {
+    color: var(--color-glaciar);
+  }
+}
+
+.tarjeta-destino-descripcion {
+  font-size: 0.95rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 20px;
+  line-height: 1.5;
+  flex-grow: 1; /* Empuja el botón "Ver más" hacia abajo */
+}
+
+.tarjeta-destino-info .btn {
+  align-self: flex-start; /* Botón ocupa solo su contenido */
+}
+
+.seccion-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+/* ====================================================
+   9. SECCIÓN TESTIMONIOS (OPINIONES DE VIAJEROS)
+   ====================================================
+   💡 PSEUDO-ELEMENTO ::BEFORE:
+   .testimonio-texto::before inserta una comilla doble
+   decorativa ANTES del texto del testimonio.
+   - content: '“' → el carácter de comilla doble
+   - font-size: 4.5rem → enorme (72px aprox)
+   - opacity: 0.15 → muy tenue, casi transparente
+   - position: absolute → se posiciona detrás del texto
+   Esto crea un efecto visual elegante sin ensuciar el HTML.
+
+   💡 FLEXBOX EN TARJETA:
+   .tarjeta-testimonio usa display: flex + flex-direction: column.
+   margin-top: auto en .testimonio-autor empuja la información
+   del autor al fondo de la tarjeta, independientemente de la
+   longitud del testimonio.
+
+   💡 FONT-STYLE: NORMAL EN CITE:
+   La etiqueta <cite> por defecto se muestra en cursiva.
+   Como ya estamos usando font-style: italic en el testimonio,
+   aplicamos font-style: normal al nombre para que no herede
+   la cursiva del <cite>.
+*/
+
+.testimonios {
+  background-color: var(--color-nieve);
+}
+
+.testimonios-grilla {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.tarjeta-testimonio {
+  background-color: var(--color-superficie);
+  padding: 32px 24px 24px;
+  border-radius: var(--radio-lg);
+  position: relative;
+  box-shadow: var(--sombra-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--color-borde);
+}
+
+.testimonio-texto {
+  font-style: italic;
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Comillas decorativas grandes al inicio del testimonio */
+.testimonio-texto::before {
+  content: '“';
+  font-size: 4.5rem;
+  font-family: var(--font-titulo);
+  color: var(--color-glaciar);
+  opacity: 0.15;
+  position: absolute;
+  top: -32px;
+  left: -8px;
+  line-height: 1;
+}
+
+.testimonio-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.testimonio-avatar {
+  font-size: 2rem;
+  background-color: var(--color-nieve);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radio-full);
+  flex-shrink: 0;
+}
+
+.testimonio-nombre {
+  display: block;
+  font-weight: 700;
+  color: var(--color-lago);
+  font-size: 0.95rem;
+  font-style: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  .testimonio-nombre {
+    color: var(--color-glaciar);
+  }
+}
+
+.testimonio-origen {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-texto-secundario);
+}
+
+
+/* ====================================================
+   10. SECCIÓN NEWSLETTER (FORMULARIO DE SUSCRIPCIÓN)
+   ====================================================
+   💡 SECCIÓN DE CONTRASTE:
+   La sección newsletter tiene fondo oscuro (--color-lago)
+   y texto claro (--color-nieve). Esto crea un contraste
+   visual que la destaca del resto de la página y atrae
+   la atención del usuario hacia el formulario.
+
+   💡 FOCUS VISIBLE (ACCESIBILIDAD):
+   .newsletter-input:focus cambia el borde a naranja y
+   agrega un box-shadow. Esto es CRUCIAL para accesibilidad:
+   los usuarios que navegan con teclado (Tab) necesitan ver
+   QUÉ campo está activo. Sin el focus visible, no sabrían
+   dónde están escribiendo.
+
+   💡 CLASES .exito / .error:
+   JavaScript agrega estas clases dinámicamente para mostrar
+   mensajes de éxito (verde) o error (rojo). Los colores
+   siguen convenciones universales: verde = bien, rojo = mal.
+*/
+
+.newsletter {
+  background-color: var(--color-lago);
+  color: var(--color-nieve);
+  padding: 48px 0;
+  text-align: center;
+}
+
+.newsletter .seccion-titulo {
+  color: var(--color-nieve);
+}
+
+.newsletter .seccion-subtitulo {
+  color: var(--color-cielo);
+  margin-bottom: 24px;
+}
+
+.newsletter-contenido {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.newsletter-input {
+  padding: 14px 20px;
+  border-radius: var(--radio-full);
+  border: 2px solid transparent;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-family: inherit;
+  transition: background-color var(--transicion-rapida), border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.newsletter-input:focus {
+  background-color: #ffffff;
+  border-color: var(--color-atardecer);
+  box-shadow: 0 0 0 3px rgba(241, 143, 1, 0.3);
+}
+
+.newsletter-btn {
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 28px;
+}
+
+.newsletter-mensaje {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.newsletter-mensaje.exito {
+  color: #2ecc71;
+}
+
+.newsletter-mensaje.error {
+  color: #e74c3c;
+}
+
+
+/* ====================================================
+   11. BARRA DE FILTROS Y BUSCADOR (SECCIÓN DESTINOS)
+   ====================================================
+   💡 SCROLL HORIZONTAL EN MÓVIL:
+   .filtros-categorias usa overflow-x: auto para que los
+   botones de filtro se desplacen horizontalmente si no
+   entran en la pantalla. Esto es mejor que hacerlos más
+   chicos o apilarlos verticalmente.
+
+   💡 OCULTAR SCROLLBAR:
+   scrollbar-width: none (Firefox) y ::-webkit-scrollbar
+   (Chrome/Safari) ocultan la barra de scroll visualmente
+   pero mantienen la funcionalidad de desplazamiento.
+   Esto es un patrón común en interfaces modernas.
+
+   💡 FLEX-SHRINK: 0:
+   Evita que los botones se "encojan" cuando el contenedor
+   flex tiene overflow. Sin esto, los botones se comprimirían
+   para tratar de entrar en el ancho disponible.
+
+   💡 BOTÓN ACTIVO:
+   .filtro-btn.activo cambia el fondo a azul glaciar y el
+   texto a blanco. JavaScript alterna esta clase cuando el
+   usuario hace clic en un filtro diferente.
+*/
+
+.filtros {
+  background-color: var(--color-nieve);
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.filtros .contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Botones de categorías con scroll horizontal en móvil */
+.filtros-categorias {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+  scrollbar-width: none;             /* Oculta scrollbar en Firefox */
+}
+
+.filtros-categorias::-webkit-scrollbar {
+  display: none;                     /* Oculta scrollbar en Chrome/Safari */
+}
+
+.filtro-btn {
+  flex-shrink: 0;                    /* Evita que se encojan en la barra de scroll */
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  padding: 8px 16px;
+  border-radius: var(--radio-full);
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: background-color var(--transicion-rapida), color var(--transicion-rapida), border-color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.filtro-btn:hover {
+  background-color: var(--color-nieve);
+  border-color: var(--color-glaciar);
+  color: var(--color-glaciar);
+  transform: translateY(-1px);
+}
+
+.filtro-btn:active {
+  transform: translateY(0);
+}
+
+/* Filtro activo/seleccionado */
+.filtro-btn.activo {
+  background-color: var(--color-glaciar);
+  border-color: var(--color-glaciar);
+  color: var(--color-nieve);
+  box-shadow: 0 2px 6px rgba(46, 134, 171, 0.3);
+}
+
+.filtros-buscador {
+  width: 100%;
+}
+
+.buscador-input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: var(--radio-full);
+  border: 1px solid var(--color-borde);
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  font-family: inherit;
+  transition: border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.buscador-input:focus {
+  border-color: var(--color-glaciar);
+  box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
+}
+
+.filtros-contador {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  font-weight: 600;
+}
+
+.sin-resultados {
+  text-align: center;
+  font-size: 1.15rem;
+  padding: 48px 20px;
+  color: var(--color-texto-secundario);
+}
+
+
+/* ====================================================
+   12. FOOTER GLOBAL (PIE DE PÁGINA)
+   ====================================================
+   💡 MARGIN-TOP: AUTO EN EL FOOTER:
+   El body tiene display: flex + flex-direction: column +
+   min-height: 100vh. El footer con margin-top: auto se
+   empuja al fondo de la página, incluso si el contenido
+   es escaso. Esto se llama "sticky footer".
+
+   💡 PSEUDO-ELEMENTO ::AFTER EN TÍTULO:
+   .footer-titulo::after crea una línea decorativa naranja
+   debajo del título. position: absolute + bottom: 0 la
+   posiciona en la parte inferior del título.
+
+   💡 TRANSITION EN ENLACES:
+   .footer-enlaces a:hover cambia el color y agrega
+   padding-left: 6px. Esto crea un efecto de "deslizamiento"
+   sutil al pasar el mouse, mejorando la experiencia visual.
+
+   💡 COLORES DEL FOOTER:
+   El footer usa colores fijos (#1b1b2f, #a0a0b8) en lugar
+   de variables CSS porque queremos que sea SIEMPRE oscuro,
+   independientemente del modo claro/oscuro del sistema.
+*/
+
+.footer {
+  background-color: #1b1b2f; /* Fondo oscuro tipo pizarra patagónica */
+  color: var(--color-nieve);
+  padding: 48px 0 0;
+  font-size: 0.9rem;
+  margin-top: auto;          /* Empuja el footer si el contenido es escaso */
+}
+
+.footer-contenido {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-titulo {
+  font-family: var(--font-titulo);
+  font-size: 1.25rem;
+  color: var(--color-glaciar);
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* Línea decorativa debajo del título del footer */
+.footer-titulo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-atardecer);
+}
+
+.footer-descripcion {
+  color: #a0a0b8;
+  line-height: 1.6;
+}
+
+.footer-enlaces {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-enlaces a {
+  color: #a0a0b8;
+  transition: color var(--transicion-rapida), padding-left var(--transicion-rapida);
+}
+
+.footer-enlaces a:hover {
+  color: var(--color-atardecer);
+  padding-left: 6px; /* Efecto de desplazamiento sutil al hover */
+}
+
+.footer-contacto {
+  font-style: normal;
+  color: #a0a0b8;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-contacto a {
+  color: inherit;
+}
+
+.footer-contacto a:hover {
+  color: var(--color-glaciar);
+}
+
+.footer-redes {
+  display: flex;
+  gap: 12px;
+}
+
+.red-social {
+  font-size: 1.4rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radio-full);
+  transition: background-color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.red-social:hover {
+  background-color: var(--color-glaciar);
+  transform: translateY(-3px);
+}
+
+/* Barra inferior del pie de página (copyright) */
+.footer-inferior {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 20px 0;
+  text-align: center;
+  color: #7f7f9c;
+  font-size: 0.8rem;
+}
+
+
+/* ====================================================
+   13. ESTILOS DE FORMULARIO DE CONTACTO
+   ====================================================
+   💡 VALIDACIÓN VISUAL CON ARIA-INVALID:
+   CSS selecciona inputs con aria-invalid="true" y les
+   aplica borde rojo. JavaScript cambia este atributo
+   dinámicamente. Esto es mejor que usar clases CSS
+   porque:
+   - Los lectores de pantalla también detectan el cambio.
+   - El estado de validación está en el HTML, no solo en CSS.
+
+   💡 MIN-HEIGHT EN ERROR-MENSAJE:
+   .error-mensaje tiene min-height: 18px para que el
+   espacio del mensaje de error esté SIEMPRE reservado,
+   incluso cuando está vacío. Esto evita que el layout
+   "salte" cuando aparece/desaparece un error.
+
+   💡 MAPA PLACEHOLDER:
+   El mapa es un placeholder visual (no un mapa real de
+   Google Maps). Tiene un gradiente decorativo de fondo
+   (::before) y texto informativo. En un proyecto real,
+   aquí iría un <iframe> de Google Maps o Leaflet.
+
+   💡 GRID DE CONTACTO:
+   .grid-contacto usa CSS Grid con 1 columna en móvil
+   y 2 columnas en desktop (ver media queries). Cada
+   columna es un <article> independiente.
+*/
+
+.contacto-seccion-titulo {
+  font-family: var(--font-titulo);
+  font-size: 1.5rem;
+  color: var(--color-lago);
+  margin-bottom: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contacto-seccion-titulo {
+    color: var(--color-glaciar);
+  }
+}
+
+.contacto-seccion-subtitulo {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 24px;
+}
+
+.form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+.campo-input,
+.campo-select,
+.campo-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.campo-input:focus,
+.campo-select:focus,
+.campo-textarea:focus {
+  border-color: var(--color-glaciar);
+  box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
+}
+
+/* Estilo para inputs inválidos (validación dinámica con JS) */
+.campo-input[aria-invalid="true"],
+.campo-select[aria-invalid="true"],
+.campo-textarea[aria-invalid="true"] {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15) !important;
+}
+
+.error-mensaje {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+  min-height: 18px; /* Evita que el layout salte al mostrar/ocultar errores */
+  display: block;
+}
+
+.campo-grupo-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.campo-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.campo-label-checkbox {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  cursor: pointer;
+  user-select: none;
+}
+
+.contacto-mensaje-general {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.contacto-mensaje-general.exito {
+  color: #2ecc71;
+}
+
+.contacto-mensaje-general.error {
+  color: #e74c3c;
+}
+
+/* ── Información de Oficinas y Direcciones ── */
+.contacto-direccion-bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-style: normal;
+}
+
+.contacto-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contacto-item .contacto-icono {
+  font-size: 1.5rem;
+  background-color: var(--color-nieve);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radio-md);
+  flex-shrink: 0;
+}
+
+.contacto-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-lago);
+}
+
+@media (prefers-color-scheme: dark) {
+  .contacto-item strong {
+    color: var(--color-glaciar);
+  }
+}
+
+.contacto-item p {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+}
+
+.contacto-item a:hover {
+  color: var(--color-glaciar);
+}
+
+/* ── Mapa Simulativo Responsivo ── */
+.mapa-placeholder {
+  background-color: var(--color-nieve);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  padding: 40px 24px;
+  text-align: center;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sombra-sm);
+}
+
+.mapa-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(46, 134, 171, 0.05) 0%, rgba(22, 78, 99, 0.05) 100%);
+  z-index: 0;
+}
+
+.mapa-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.mapa-icono {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mapa-placeholder strong {
+  display: block;
+  font-family: var(--font-titulo);
+  color: var(--color-lago);
+  margin-bottom: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mapa-placeholder strong {
+    color: var(--color-glaciar);
+  }
+}
+
+.mapa-placeholder p {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+}
+
+/* ── Grid de Contacto (2 columnas en desktop) ── */
+.grid-contacto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+
+/* ====================================================
+   14. ESTILOS NOSOTROS (SECCIÓN INSTITUCIONAL)
+   ====================================================
+   Página "Sobre Nosotros" con texto institucional
+   y tarjetas de misión, visión y valores.
+   (Estilos mínimos, el layout principal usa las
+   clases comunes de .seccion y .contenedor.)
+*/
+
+.nosotros-layout {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.nosotros-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 1.05rem;
+  color: var(--color-texto);
+  line-height: 1.7;
+}
+
+
+/* ====================================================
+   15. DISEÑO RESPONSIVO (MEDIA QUERIES)
+   ====================================================
+   💡 ESTRATEGIA MOBILE FIRST:
+   Comenzamos diseñando para la pantalla MÁS CHICA
+   (móvil, < 768px). Luego, con @media (min-width: ...)
+   AGREGAMOS columnas y ajustamos layouts a medida que
+   la pantalla crece.
+
+   💡 PUNTOS DE QUIEBRE (BREAKPOINTS):
+   - 768px: tablet (2 columnas)
+   - 1024px: desktop (3-4 columnas)
+
+   💡 ¿POR QUÉ min-width Y NO max-width?
+   Mobile First usa min-width porque:
+   - Los estilos BASE son para móvil.
+   - Cada media query AGREGA estilos para pantallas
+     más grandes.
+   - Es más fácil de mantener que tener estilos de
+     desktop y luego "romperlos" con max-width.
+
+   💡 ORDER EN FLEXBOX:
+   .filtros-categorias { order: 1 }
+   .filtros-buscador { order: 2 }
+   .filtros-contador { order: 3 }
+   La propiedad order cambia el orden visual de los
+   elementos flex sin cambiar el HTML. Útil para
+   reorganizar el layout según el tamaño de pantalla.
+*/
+
+/* ── Pantallas de Tableta (min-width: 768px) ── */
+@media (min-width: 768px) {
+  .seccion {
+    padding: 60px 0;
+  }
+
+  /* Header y Navegación Horizontal */
+  .header-contenido {
+    padding: 16px 0;
+  }
+
+  .menu-hamburguesa {
+    display: none; /* Ocultamos el botón hamburguesa en desktop */
+  }
+
+  .nav-principal {
+    position: static;
+    display: block; /* Mostramos el menú siempre visible */
+    width: auto;
+    background-color: transparent;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .nav-lista {
+    flex-direction: row; /* Enlaces uno al lado del otro */
+    padding: 0;
+    gap: 8px;
+  }
+
+  .nav-enlace {
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: var(--radio-full);
+  }
+
+  .nav-enlace:hover {
+    background-color: var(--color-nieve);
+  }
+
+  .nav-enlace.activo {
+    border-left: none;
+    background-color: var(--color-nieve);
+    border-bottom: 3px solid var(--color-glaciar);
+    border-radius: var(--radio-md) var(--radio-md) 0 0;
+  }
+
+  /* Grillas de 2 Columnas */
+  .tarjetas-grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .destinos-grilla {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .tarjeta-destino-imagen {
+    height: 220px;
+  }
+
+  .testimonios-grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Newsletter en horizontal (input + botón lado a lado) */
+  .newsletter-form {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .newsletter-input {
+    flex-grow: 1; /* El input toma el espacio restante */
+  }
+
+  .newsletter-btn {
+    width: auto; /* El botón ya no toma el 100% */
+  }
+
+  /* Footer de 2 Columnas */
+  .footer-contenido {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Filtros y Buscador en línea */
+  .filtros .contenedor {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .filtros-categorias {
+    order: 1;
+    padding-bottom: 0;
+  }
+
+  .filtros-buscador {
+    order: 2;
+    width: 280px; /* Buscador con tamaño fijo a la derecha */
+  }
+
+  .filtros-contador {
+    order: 3;
+    width: 100%;
+  }
+
+  /* Grid de Contacto de 2 Columnas */
+  .grid-contacto {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* ── Pantallas de Escritorio (min-width: 1024px) ── */
+@media (min-width: 1024px) {
+  .seccion {
+    padding: 80px 0;
+  }
+
+  /* Grillas de 3 y 4 Columnas */
+  .tarjetas-grilla {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .destinos-grilla {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .testimonios-grilla {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-contenido {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .filtros-buscador {
+    width: 320px;
+  }
+
+  .filtros-contador {
+    order: 2; /* Movemos el contador en la misma línea */
+    width: auto;
+  }
+
+  /* Ajuste de espaciado en Escritorio */
+  .grid-contacto {
+    gap: 60px;
+  }
+}
