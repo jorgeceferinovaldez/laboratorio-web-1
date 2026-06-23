@@ -93,7 +93,7 @@ a:hover {
 /*-------------------------------------*/
 /* Barra de navegación fija en la parte superior con el logo,
    el menú principal y los iconos de redes sociales.
-   En este capítulo también agregamos la barra móvil (.menu-bar-movil)
+   En este capítulo tambiécolorn agregamos la barra móvil (.menu-bar-movil)
    y el menú lateral deslizable (.slideMenu). */
 header .menu-bar-pc {
   background: var(--color-blanco);

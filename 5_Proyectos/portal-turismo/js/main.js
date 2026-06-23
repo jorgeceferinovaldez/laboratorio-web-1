@@ -128,7 +128,7 @@ if (btnMenu && navPrincipal) {
  * 💡 ¿POR QUÉ UNA FUNCIÓN SEPARADA?
  * En lugar de duplicar el código de "cerrar menú" en varios
  * lugares (click en enlace, cambio de hash, etc.), creamos
- * una función reutilizable. Esto se llama DRY (Don't Repeat
+ * una función reutilizableyendole. Esto se llama DRY (Don't Repeat
  * Yourself) y es una buena práctica de programación.
  */
 function cerrarMenuMovil() {
